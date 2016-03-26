@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MasterServer" GeneratedClassName="ServerSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PortForSubServerPeer" Type="System.UInt16" Scope="Application">
+      <Value Profile="(Default)">4520</Value>
+    </Setting>
+    <Setting Name="ServerType" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MasterServer</Value>
+    </Setting>
+    <Setting Name="ServerName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MasterServer</Value>
+    </Setting>
+    <Setting Name="CaptchaLifeTime" Type="System.Int64" Scope="Application">
+      <Value Profile="(Default)">300000</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
