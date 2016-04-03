@@ -21,6 +21,7 @@
 
 using System;
 using System.IO;
+using DatabaseServer.Entity.Context;
 using ExitGames.Concurrency.Fibers;
 using ExitGames.Logging;
 using ExitGames.Logging.Log4Net;
@@ -141,6 +142,7 @@ namespace DatabaseServer
             Load = new ServerLoad();
             Fiber = new ExtendedPoolFiber();
             Fiber.Start();
+            UpdateDatabase.Migration();
         }
 
         /// <summary>

@@ -41,5 +41,10 @@ namespace DatabaseServer.Entity.Models
         public string Password { get; set; }
 
         public DateTime RegistTime { get; set; }
+
+        public int Num { get; set; }
+
+        public int A { get; set; }
+
     }
 }
