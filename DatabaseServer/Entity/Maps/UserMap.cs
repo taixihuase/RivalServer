@@ -8,7 +8,7 @@
 //
 // User 映射
 //
-// 创建标识：taixihuase 20160403
+// 创建标识：taixihuase 20160322
 //
 // 修改标识：
 // 修改描述：
@@ -21,8 +21,9 @@
 
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+using C2SProtocol.Entity.Models;
 
-namespace DatabaseServer.Entity.Models.Maps
+namespace DatabaseServer.Entity.Maps
 {
     /// <summary>
     /// 类型：类
@@ -44,18 +45,24 @@ namespace DatabaseServer.Entity.Models.Maps
         {
             ToTable("User");
 
-            HasKey(t => t.Id)
-                .Property(t => t.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
-                .HasColumnName("UserId");
+            HasKey(t => t.Id);
 
-            Property(t => t.Account).HasMaxLength(30).IsRequired().HasColumnName("Account");
+            Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("UserId");
 
-            Property(t => t.Nickname).HasMaxLength(10).IsRequired().HasColumnName("Nickname");
+            Property(t => t.Account).IsRequired().HasMaxLength(30).HasColumnName("Account");
 
-            Property(t => t.Password).HasMaxLength(30).IsRequired().HasColumnName("Password");
+            Property(t => t.Nickname).IsRequired().HasMaxLength(10).HasColumnName("Nickname");
+
+            Property(t => t.Password).IsRequired().HasMaxLength(30).HasColumnName("Password");
 
             Property(t => t.RegistTime).IsRequired().HasColumnName("RegistTime");
+
+            HasMany(t => t.Friends).WithMany().Map(m =>
+            {
+                m.ToTable("Friend_Mapping");
+                m.MapLeftKey("UserId_L");
+                m.MapRightKey("UserId_R");
+            });
         }
     }
 }

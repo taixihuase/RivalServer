@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\Unity 5.3.1\Projects\Servers\Assets\Plugins\</OutputPath>
+    <OutputPath>..\..\..\..\Unity 5.3.1\Projects\Rival\Assets\Plugins\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,7 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\Unity 5.3.1\Projects\Servers\Assets\Plugins\</OutputPath>
+    <OutputPath>..\..\..\..\Unity 5.3.1\Projects\Rival\Assets\Plugins\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -84,6 +84,7 @@
       <HintPath>..\..\..\..\Unity 5.3.1\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\Rival\Protocol\bin\Protocol.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -95,6 +96,17 @@
     <Compile Include="Common\C2SOpCode.cs" />
     <Compile Include="Common\C2SParaCode.cs" />
     <Compile Include="Common\C2SRetCode.cs" />
+    <Compile Include="Entity\Models\Avatar.cs" />
+    <Compile Include="Entity\Models\Card.cs" />
+    <Compile Include="Entity\Models\CardEffect.cs" />
+    <Compile Include="Entity\Models\CombatAttribute.cs" />
+    <Compile Include="Entity\Models\Level.cs" />
+    <Compile Include="Entity\Models\LordCard.cs" />
+    <Compile Include="Entity\Models\MonsterCard.cs" />
+    <Compile Include="Entity\Models\Player.cs" />
+    <Compile Include="Entity\Models\SpellCard.cs" />
+    <Compile Include="Entity\Models\Title.cs" />
+    <Compile Include="Entity\Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\ServerSettings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -111,6 +123,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>ServerSettings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

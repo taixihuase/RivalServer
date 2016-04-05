@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 using ProtoBuf;
 
 namespace Protocol
@@ -121,33 +122,33 @@ namespace Protocol
             return true;
         }
 
-    //    /// <summary>
-    //    /// 类型：方法
-    //    /// 名称：ToJson
-    //    /// 作者：taixihuase
-    //    /// 作用：将一个对象序列化成Json字符串
-    //    /// 编写日期：2016/1/25
-    //    /// </summary>
-    //    /// <param name="obj"></param>
-    //    /// <returns></returns>
-    //    public static string ToJson(object obj)
-    //    {
-    //        return JsonConvert.SerializeObject(obj);
-    //    }
+        /// <summary>
+        /// 类型：方法
+        /// 名称：ToJson
+        /// 作者：taixihuase
+        /// 作用：将一个对象序列化成Json字符串
+        /// 编写日期：2016/1/25
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string ToJson(object obj)
+        {
+            return JsonConvert.SerializeObject(obj);
+        }
 
-    //    /// <summary>
-    //    /// 类型：方法
-    //    /// 名称：FromJson
-    //    /// 作者：taixihuase
-    //    /// 作用：将一个Json字符串反序列化为对象实例
-    //    /// 编写日期：2016/1/25
-    //    /// </summary>
-    //    /// <typeparam name="T"></typeparam>
-    //    /// <param name="str"></param>
-    //    /// <returns></returns>
-    //    public static T FromJson<T>(string str)
-    //    {
-    //        return JsonConvert.DeserializeObject<T>(str);
-    //    }
+        /// <summary>
+        /// 类型：方法
+        /// 名称：FromJson
+        /// 作者：taixihuase
+        /// 作用：将一个Json字符串反序列化为对象实例
+        /// 编写日期：2016/1/25
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static T FromJson<T>(string str)
+        {
+            return JsonConvert.DeserializeObject<T>(str);
+        }
     }
 }

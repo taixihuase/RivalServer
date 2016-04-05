@@ -19,10 +19,8 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Data.Entity.Migrations;
 using DatabaseServer.Entity.Context;
-using DatabaseServer.Entity.Models;
 
 namespace DatabaseServer.Migrations
 {
