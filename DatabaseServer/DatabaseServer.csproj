@@ -145,15 +145,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseServerApplication.cs" />
+    <Compile Include="Entity\Maps\CardEffectMap.cs" />
+    <Compile Include="Entity\Maps\CombatAttributeMap.cs" />
+    <Compile Include="Entity\Maps\CardMap.cs" />
+    <Compile Include="Entity\Maps\LevelMap.cs" />
+    <Compile Include="Entity\Maps\TitleMap.cs" />
+    <Compile Include="Entity\Maps\AvatarMap.cs" />
     <Compile Include="Entity\Context\IUnitOfWork.cs" />
-    <Compile Include="Entity\Models\Maps\UserMap.cs" />
+    <Compile Include="Entity\Maps\PlayerMap.cs" />
+    <Compile Include="Entity\Maps\UserMap.cs" />
     <Compile Include="Entity\Context\UpdateDatabase.cs" />
     <Compile Include="Entity\Context\RivalContext.cs" />
     <Compile Include="Entity\Context\RivalInitializer.cs" />
-    <Compile Include="Entity\Models\User.cs" />
-    <Compile Include="Migrations\201604031439202_InitialCreate.cs" />
-    <Compile Include="Migrations\201604031439202_InitialCreate.Designer.cs">
-      <DependentUpon>201604031439202_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201604051417384_2216.cs" />
+    <Compile Include="Migrations\201604051417384_2216.Designer.cs">
+      <DependentUpon>201604051417384_2216.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604051436554_2236.cs" />
+    <Compile Include="Migrations\201604051436554_2236.Designer.cs">
+      <DependentUpon>201604051436554_2236.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604051440539_2240.cs" />
+    <Compile Include="Migrations\201604051440539_2240.Designer.cs">
+      <DependentUpon>201604051440539_2240.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PeerToMasterServer.cs" />
@@ -179,16 +193,22 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604031439202_InitialCreate.resx">
-      <DependentUpon>201604031439202_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604051417384_2216.resx">
+      <DependentUpon>201604051417384_2216.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604051436554_2236.resx">
+      <DependentUpon>201604051436554_2236.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604051440539_2240.resx">
+      <DependentUpon>201604051440539_2240.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -19,11 +19,7 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using DatabaseServer.Entity.Models;
 using DatabaseServer.Migrations;
 
 namespace DatabaseServer.Entity.Context

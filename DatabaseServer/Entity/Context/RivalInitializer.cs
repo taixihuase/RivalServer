@@ -19,13 +19,10 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using DatabaseServer.Entity.Models;
 
 namespace DatabaseServer.Entity.Context
-{
+{ 
     /// <summary>
     /// 类型：类
     /// 名称：RivalInitializer

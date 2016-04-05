@@ -19,12 +19,10 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Data.Entity;
 using System.Linq;
-using DatabaseServer.Entity.Models;
-using DatabaseServer.Entity.Models.Maps;
-using DatabaseServer.Migrations;
+using C2SProtocol.Entity.Models;
+using DatabaseServer.Entity.Maps;
 
 namespace DatabaseServer.Entity.Context
 {
@@ -38,6 +36,18 @@ namespace DatabaseServer.Entity.Context
     public class RivalContext : DbContext, IUnitOfWork
     {
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Player> Players { get; set; }
+
+        public DbSet<Level> Levels { get; set; }
+
+        public DbSet<Avatar> Avatars { get; set; }
+
+        public DbSet<Title> Titles { get; set; }
+
+        public DbSet<Card> Cards { get; set; }
+
+        public DbSet<CardEffect> CardEffects { get; set; }
 
         /// <summary>
         /// 类型：方法
@@ -72,7 +82,16 @@ namespace DatabaseServer.Entity.Context
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new UserMap());
+            modelBuilder.Configurations
+                .Add(new UserMap())
+                .Add(new PlayerMap())
+                .Add(new AvatarMap())
+                .Add(new TitleMap())
+                .Add(new LevelMap())
+                .Add(new CardMap())
+                .Add(new CombatAttributeMap())
+                .Add(new CardEffectMap());
+            
             base.OnModelCreating(modelBuilder);
         }
 
