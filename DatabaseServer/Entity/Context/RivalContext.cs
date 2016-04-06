@@ -23,6 +23,13 @@ using System.Data.Entity;
 using System.Linq;
 using C2SProtocol.Entity.Models;
 using DatabaseServer.Entity.Maps;
+using Avatar = DatabaseServer.Entity.Models.Avatar;
+using Card = DatabaseServer.Entity.Models.Card;
+using CardEffect = DatabaseServer.Entity.Models.CardEffect;
+using Level = DatabaseServer.Entity.Models.Level;
+using Player = DatabaseServer.Entity.Models.Player;
+using Title = DatabaseServer.Entity.Models.Title;
+using User = DatabaseServer.Entity.Models.User;
 
 namespace DatabaseServer.Entity.Context
 {

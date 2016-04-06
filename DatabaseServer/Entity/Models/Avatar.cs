@@ -21,7 +21,7 @@
 
 using System.Collections.Generic;
 
-namespace C2SProtocol.Entity.Models
+namespace DatabaseServer.Entity.Models
 {
     /// <summary>
     /// 类型：类

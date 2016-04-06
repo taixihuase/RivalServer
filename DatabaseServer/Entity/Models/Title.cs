@@ -2,13 +2,13 @@
 // Copyright (C) 2016-2017 Rival
 // 版权所有
 //
-// 文件名：User.cs
+// 文件名：Title.cs
 //
 // 文件功能描述：
 //
-// User 实体
+// Title 实体
 //
-// 创建标识：taixihuase 20160322
+// 创建标识：taixihuase 20160404
 //
 // 修改标识：
 // 修改描述：
@@ -19,32 +19,25 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 
-namespace C2SProtocol.Entity.Models
+namespace DatabaseServer.Entity.Models
 {
     /// <summary>
     /// 类型：类
-    /// 名称：User
+    /// 名称：Title
     /// 作者：taixihuase
-    /// 作用：User 实体
-    /// 编写日期：2016/3/22
+    /// 作用：Title 实体
+    /// 编写日期：2016/4/4
     /// </summary>
-    public class User
+    public class Title
     {
         public int Id { get; set; }
 
-        public string Account { get; set; }
+        public string Name { get; set; }
 
-        public string Nickname { get; set; }
+        public virtual ICollection<Player> DefaultPlayers { get; set; } = new List<Player>();
 
-        public string Password { get; set; }
-
-        public DateTime RegistTime { get; set; }
-
-        public virtual Player Player { get; set; }
-
-        public virtual ICollection<User> Friends { get; set; } = new List<User>();
+        public virtual ICollection<Player> Players { get; set; } = new List<Player>();
     }
 }

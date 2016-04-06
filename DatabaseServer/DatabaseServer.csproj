@@ -157,6 +157,17 @@
     <Compile Include="Entity\Context\UpdateDatabase.cs" />
     <Compile Include="Entity\Context\RivalContext.cs" />
     <Compile Include="Entity\Context\RivalInitializer.cs" />
+    <Compile Include="Entity\Models\Avatar.cs" />
+    <Compile Include="Entity\Models\Card.cs" />
+    <Compile Include="Entity\Models\CardEffect.cs" />
+    <Compile Include="Entity\Models\CombatAttribute.cs" />
+    <Compile Include="Entity\Models\Level.cs" />
+    <Compile Include="Entity\Models\LordCard.cs" />
+    <Compile Include="Entity\Models\MonsterCard.cs" />
+    <Compile Include="Entity\Models\Player.cs" />
+    <Compile Include="Entity\Models\SpellCard.cs" />
+    <Compile Include="Entity\Models\Title.cs" />
+    <Compile Include="Entity\Models\User.cs" />
     <Compile Include="Migrations\201604051417384_2216.cs" />
     <Compile Include="Migrations\201604051417384_2216.Designer.cs">
       <DependentUpon>201604051417384_2216.cs</DependentUpon>
@@ -168,6 +179,10 @@
     <Compile Include="Migrations\201604051440539_2240.cs" />
     <Compile Include="Migrations\201604051440539_2240.Designer.cs">
       <DependentUpon>201604051440539_2240.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604060924175_1724.cs" />
+    <Compile Include="Migrations\201604060924175_1724.Designer.cs">
+      <DependentUpon>201604060924175_1724.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PeerToMasterServer.cs" />
@@ -208,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604051440539_2240.resx">
       <DependentUpon>201604051440539_2240.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604060924175_1724.resx">
+      <DependentUpon>201604060924175_1724.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -22,7 +22,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace C2SProtocol.Entity.Models
+namespace DatabaseServer.Entity.Models
 {
     /// <summary>
     /// 类型：类
@@ -37,7 +37,7 @@ namespace C2SProtocol.Entity.Models
 
         public string Name { get; set; }
 
-        public string Type { get; set; }
+        public CardType Type { get; set; }
 
         /// <summary>
         /// 类型：枚举
@@ -46,7 +46,7 @@ namespace C2SProtocol.Entity.Models
         /// 作用：卡牌类型枚举
         /// 编写日期：2016/4/5
         /// </summary>
-        public enum CardType
+        public enum CardType : byte
         {
             [Description("Basic")] Basic,
             [Description("Lord")] Lord,
@@ -54,7 +54,7 @@ namespace C2SProtocol.Entity.Models
             [Description("Spell")] Spell
         }
 
-        public string MainAttribute { get; set; }
+        public AttributeType MainAttribute { get; set; }
 
         /// <summary>
         /// 类型：枚举
@@ -63,7 +63,7 @@ namespace C2SProtocol.Entity.Models
         /// 作用：五行属性类型枚举
         /// 编写日期：2016/4/5
         /// </summary>
-        public enum AttributeType
+        public enum AttributeType : byte
         {
             [Description("木")]
             Wood,
@@ -77,7 +77,7 @@ namespace C2SProtocol.Entity.Models
             Water
         }
 
-        public string Rarity { get; set; }
+        public RarityType Rarity { get; set; }
 
         /// <summary>
         /// 类型：枚举
@@ -86,7 +86,7 @@ namespace C2SProtocol.Entity.Models
         /// 作用：稀有度类型枚举
         /// 编写日期：2016/4/5
         /// </summary>
-        public enum RarityType
+        public enum RarityType : byte
         {
             [Description("普通")]
             Ordinary,
@@ -98,6 +98,23 @@ namespace C2SProtocol.Entity.Models
             Legendary
         }
 
-        public virtual ICollection<CardEffect> CardEffects { get; set; } = new List<CardEffect>(); 
+        public virtual ICollection<CardEffect> CardEffects { get; set; } = new List<CardEffect>();
+
+        /// <summary>
+        /// 类型：枚举
+        /// 名称：MagnitudeType
+        /// 作者：taixihuase
+        /// 作用：星等类型枚举
+        /// 编写日期：2016/4/6
+        /// </summary>
+        public enum MagnitudeType : byte
+        {
+            [Description("1")] One,
+            [Description("2")] Two,
+            [Description("3")] Three,
+            [Description("4")] Four,
+            [Description("5")] Five,
+            [Description("6")] Six
+        }
     }
 }

@@ -22,7 +22,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace C2SProtocol.Entity.Models
+namespace DatabaseServer.Entity.Models
 {
     /// <summary>
     /// 类型：类
@@ -35,7 +35,7 @@ namespace C2SProtocol.Entity.Models
     {
         public int Id { get; set; }
 
-        public string Owner { get; set; }
+        public OwnerType Owner { get; set; }
 
         /// <summary>
         /// 类型：枚举
@@ -44,7 +44,7 @@ namespace C2SProtocol.Entity.Models
         /// 作用：效果所有者类型枚举
         /// 编写日期：2016/4/5
         /// </summary>
-        public enum OwnerType
+        public enum OwnerType : byte
         {
             [Description("All")]
             All,
@@ -62,7 +62,7 @@ namespace C2SProtocol.Entity.Models
             MonsterAndSpell
         }
 
-        public string Condition { get; set; }
+        public ConditionType Condition { get; set; }
 
         /// <summary>
         /// 类型：枚举
@@ -71,11 +71,10 @@ namespace C2SProtocol.Entity.Models
         /// 作用：触发条件类型枚举
         /// 编写日期：2016/4/5
         /// </summary>
-        public enum ConditionType
+        public enum ConditionType : byte
         {
             [Description("All")]
             All,
-
         }
 
         public string Description { get; set; }
