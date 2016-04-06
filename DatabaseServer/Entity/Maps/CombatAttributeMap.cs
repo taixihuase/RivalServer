@@ -20,7 +20,7 @@
 //----------------------------------------------------------------------------------------------------------
 
 using System.Data.Entity.ModelConfiguration;
-using C2SProtocol.Entity.Models;
+using DatabaseServer.Entity.Models;
 
 namespace DatabaseServer.Entity.Maps
 {
@@ -44,11 +44,11 @@ namespace DatabaseServer.Entity.Maps
         {
             Property(t => t.Attack).HasColumnName("Attack");
 
-            Property(t => t.AttackAttribute).IsRequired().HasMaxLength(1).HasColumnName("AttackAttribute").HasColumnType("nchar");
+            Property(t => t.AttackAttribute).HasColumnName("AttackAttribute");
 
             Property(t => t.Shield).HasColumnName("Shield");
 
-            Property(t => t.ShieldAttribute).IsRequired().HasMaxLength(1).HasColumnName("ShieldAttribute").HasColumnType("nchar");
+            Property(t => t.ShieldAttribute).HasColumnName("ShieldAttribute");
         }
     }
 }

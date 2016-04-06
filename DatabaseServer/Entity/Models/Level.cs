@@ -2,11 +2,11 @@
 // Copyright (C) 2016-2017 Rival
 // 版权所有
 //
-// 文件名：LordCard.cs
+// 文件名：Level.cs
 //
 // 文件功能描述：
 //
-// LordCard 实体
+// Level 实体
 //
 // 创建标识：taixihuase 20160404
 //
@@ -19,17 +19,23 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
-namespace C2SProtocol.Entity.Models
+using System.Collections.Generic;
+
+namespace DatabaseServer.Entity.Models
 {
     /// <summary>
     /// 类型：类
-    /// 名称：LordCard
+    /// 名称：Level
     /// 作者：taixihuase
-    /// 作用：LordCard 实体
+    /// 作用：Level 实体
     /// 编写日期：2016/4/4
     /// </summary>
-    public class LordCard : Card
+    public class Level
     {
-        public virtual CombatAttribute CombatAttribute { get; set; } = new CombatAttribute();
+        public int Id { get; set; }
+
+        public int UpgradeExp { get; set; }
+
+        public virtual ICollection<Player> Players { get; set; } = new List<Player>();
     }
 }

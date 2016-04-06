@@ -21,7 +21,7 @@
 
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using C2SProtocol.Entity.Models;
+using DatabaseServer.Entity.Models;
 
 namespace DatabaseServer.Entity.Maps
 {

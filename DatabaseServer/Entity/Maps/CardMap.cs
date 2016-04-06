@@ -21,7 +21,7 @@
 
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using C2SProtocol.Entity.Models;
+using DatabaseServer.Entity.Models;
 
 namespace DatabaseServer.Entity.Maps
 {
@@ -49,9 +49,9 @@ namespace DatabaseServer.Entity.Maps
             {             
                 Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("CardId");
                 Property(t => t.Name).IsRequired().HasMaxLength(10).HasColumnName("Name");
-                Property(t => t.Type).IsRequired().HasMaxLength(8).HasColumnName("Type");
-                Property(t => t.MainAttribute).IsRequired().HasMaxLength(1).HasColumnName("MainAttribute").HasColumnType("nchar");
-                Property(t => t.Rarity).IsRequired().HasMaxLength(2).HasColumnName("Rarity").HasColumnType("nchar");
+                Property(t => t.Type).HasColumnName("Type");
+                Property(t => t.MainAttribute).HasColumnName("MainAttribute");
+                Property(t => t.Rarity).IsRequired().HasColumnName("Rarity");
                 HasMany(t => t.CardEffects).WithMany(t => t.Cards).Map(ef =>
                 {
                     ef.ToTable("Card_Effect_Mapping");
