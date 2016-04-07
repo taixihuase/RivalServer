@@ -46,7 +46,7 @@ namespace DatabaseServer.Entity.Maps
 
             HasKey(t => t.Id);
 
-            Property(t => t.Id).HasColumnName("CardPoolId");
+            Property(t => t.Id).HasColumnName("UserId");
 
             HasMany(t => t.Cards).WithMany(t => t.CardPools).Map(m =>
             {
