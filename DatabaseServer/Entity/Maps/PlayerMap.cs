@@ -79,6 +79,12 @@ namespace DatabaseServer.Entity.Maps
             });
 
             Property(t => t.VirtualCurrency).HasColumnName("Currency");
+
+            Property(t => t.Win).HasColumnName("Win");
+
+            Property(t => t.Total).HasColumnName("Total");
+
+            HasRequired(t => t.CardLibrary).WithRequiredPrincipal(t => t.Player).WillCascadeOnDelete();
         }
     }
 }
