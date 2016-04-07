@@ -21,15 +21,8 @@
 
 using System.Data.Entity;
 using System.Linq;
-using C2SProtocol.Entity.Models;
 using DatabaseServer.Entity.Maps;
-using Avatar = DatabaseServer.Entity.Models.Avatar;
-using Card = DatabaseServer.Entity.Models.Card;
-using CardEffect = DatabaseServer.Entity.Models.CardEffect;
-using Level = DatabaseServer.Entity.Models.Level;
-using Player = DatabaseServer.Entity.Models.Player;
-using Title = DatabaseServer.Entity.Models.Title;
-using User = DatabaseServer.Entity.Models.User;
+using DatabaseServer.Entity.Models;
 
 namespace DatabaseServer.Entity.Context
 {
@@ -97,7 +90,8 @@ namespace DatabaseServer.Entity.Context
                 .Add(new LevelMap())
                 .Add(new CardMap())
                 .Add(new CombatAttributeMap())
-                .Add(new CardEffectMap());
+                .Add(new CardEffectMap())
+                .Add(new CardPoolMap());
             
             base.OnModelCreating(modelBuilder);
         }

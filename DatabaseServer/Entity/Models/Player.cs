@@ -55,5 +55,11 @@ namespace DatabaseServer.Entity.Models
         public virtual ICollection<Title> Titles { get; set; } = new List<Title>();
 
         public int VirtualCurrency { get; set; } 
+
+        public int Win { get; set; }
+
+        public int Total { get; set; }
+
+        public virtual CardPool CardLibrary { get; set; }
     }
 }
