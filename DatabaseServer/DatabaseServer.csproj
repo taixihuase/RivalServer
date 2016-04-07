@@ -146,6 +146,7 @@
   <ItemGroup>
     <Compile Include="DatabaseServerApplication.cs" />
     <Compile Include="Entity\Maps\CardEffectMap.cs" />
+    <Compile Include="Entity\Maps\DeckMap.cs" />
     <Compile Include="Entity\Maps\CombatAttributeMap.cs" />
     <Compile Include="Entity\Maps\CardMap.cs" />
     <Compile Include="Entity\Maps\LevelMap.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Entity\Models\Avatar.cs" />
     <Compile Include="Entity\Models\Card.cs" />
     <Compile Include="Entity\Models\CardEffect.cs" />
+    <Compile Include="Entity\Models\Deck.cs" />
     <Compile Include="Entity\Models\CombatAttribute.cs" />
     <Compile Include="Entity\Models\Level.cs" />
     <Compile Include="Entity\Models\LordCard.cs" />
@@ -174,9 +176,9 @@
     <Compile Include="Migrations\201604051417384_2216.Designer.cs">
       <DependentUpon>201604051417384_2216.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604070933095_1733.cs" />
-    <Compile Include="Migrations\201604070933095_1733.Designer.cs">
-      <DependentUpon>201604070933095_1733.cs</DependentUpon>
+    <Compile Include="Migrations\201604071741241_0141.cs" />
+    <Compile Include="Migrations\201604071741241_0141.Designer.cs">
+      <DependentUpon>201604071741241_0141.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PeerToMasterServer.cs" />
@@ -212,8 +214,8 @@
     <EmbeddedResource Include="Migrations\201604051417384_2216.resx">
       <DependentUpon>201604051417384_2216.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604070933095_1733.resx">
-      <DependentUpon>201604070933095_1733.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604071741241_0141.resx">
+      <DependentUpon>201604071741241_0141.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,7 +6,7 @@
 //
 // 文件功能描述：
 //
-// CardPool实体
+// CardPool 实体
 //
 // 创建标识：taixihuase 20160407
 //
@@ -28,7 +28,7 @@ namespace DatabaseServer.Entity.Models
     /// 名称：CardLibrary
     /// 作者：taixihuase
     /// 作用：CardPool 实体
-    /// 编写日期：2016/3/22
+    /// 编写日期：2016/4/7
     /// </summary>
     public class CardPool
     {
@@ -37,5 +37,7 @@ namespace DatabaseServer.Entity.Models
         public virtual Player Player { get; set; }
 
         public virtual ICollection<Card> Cards { get; set; } = new List<Card>(); 
+
+        public virtual ICollection<Deck> Decks { get; set; } = new List<Deck>(); 
     }
 }

@@ -48,7 +48,7 @@ namespace DatabaseServer.Entity.Maps
 
             HasRequired(t => t.User).WithOptional(t => t.Player).WillCascadeOnDelete();
 
-            Property(t => t.Id).HasColumnName("PlayerId");
+            Property(t => t.Id).HasColumnName("UserId");
 
             Property(t => t.LevelId).HasColumnName("Level");
 
