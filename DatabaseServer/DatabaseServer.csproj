@@ -172,13 +172,13 @@
     <Compile Include="Entity\Models\Title.cs" />
     <Compile Include="Entity\Models\CardPool.cs" />
     <Compile Include="Entity\Models\User.cs" />
-    <Compile Include="Migrations\201604051417384_2216.cs" />
-    <Compile Include="Migrations\201604051417384_2216.Designer.cs">
-      <DependentUpon>201604051417384_2216.cs</DependentUpon>
+    <Compile Include="Migrations\201604091359528_2159.cs" />
+    <Compile Include="Migrations\201604091359528_2159.Designer.cs">
+      <DependentUpon>201604091359528_2159.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604071741241_0141.cs" />
-    <Compile Include="Migrations\201604071741241_0141.Designer.cs">
-      <DependentUpon>201604071741241_0141.cs</DependentUpon>
+    <Compile Include="Migrations\201604091408139_2208.cs" />
+    <Compile Include="Migrations\201604091408139_2208.Designer.cs">
+      <DependentUpon>201604091408139_2208.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PeerToMasterServer.cs" />
@@ -211,11 +211,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604051417384_2216.resx">
-      <DependentUpon>201604051417384_2216.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604091359528_2159.resx">
+      <DependentUpon>201604091359528_2159.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604071741241_0141.resx">
-      <DependentUpon>201604071741241_0141.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604091408139_2208.resx">
+      <DependentUpon>201604091408139_2208.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -42,14 +42,6 @@ namespace DatabaseServer.Entity.Maps
         /// </summary>
         public PlayerMap()
         {
-            ToTable("Player");
-
-            HasKey(t => t.Id);
-
-            HasRequired(t => t.User).WithOptional(t => t.Player).WillCascadeOnDelete();
-
-            Property(t => t.Id).HasColumnName("UserId");
-
             Property(t => t.LevelId).HasColumnName("Level");
 
             HasRequired(t => t.Level).WithMany(t => t.Players).WillCascadeOnDelete(false);
@@ -58,7 +50,7 @@ namespace DatabaseServer.Entity.Maps
 
             Property(t => t.DefaultAvatarId).HasColumnName("AvatarId");
 
-            HasRequired(t => t.DefaultAvatar).WithMany(t =>t.DefaultPlayers).WillCascadeOnDelete(false);
+            HasRequired(t => t.DefaultAvatar).WithMany(t => t.DefaultPlayers).WillCascadeOnDelete(false);
 
             HasMany(t => t.Avatars).WithMany(t => t.Players).Map(m =>
             {

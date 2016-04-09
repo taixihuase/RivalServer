@@ -43,8 +43,6 @@ namespace DatabaseServer.Entity.Models
 
         public DateTime RegistTime { get; set; }
 
-        public virtual Player Player { get; set; }
-
         public virtual ICollection<User> Friends { get; set; } = new List<User>();
     }
 }

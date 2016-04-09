@@ -51,7 +51,7 @@ namespace DatabaseServer.Entity.Maps
                 Property(t => t.Name).IsRequired().HasMaxLength(10).HasColumnName("Name");
                 Property(t => t.Type).HasColumnName("Type");
                 Property(t => t.MainAttribute).HasColumnName("MainAttribute");
-                Property(t => t.Rarity).IsRequired().HasColumnName("Rarity");
+                Property(t => t.Rarity).HasColumnName("Rarity");
                 HasMany(t => t.CardEffects).WithMany(t => t.Cards).Map(ef =>
                 {
                     ef.ToTable("Card_Effect_Mapping");
