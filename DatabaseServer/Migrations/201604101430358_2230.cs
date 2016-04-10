@@ -3,7 +3,7 @@ namespace DatabaseServer.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _2159 : DbMigration
+    public partial class _2230 : DbMigration
     {
         public override void Up()
         {
@@ -27,16 +27,6 @@ namespace DatabaseServer.Migrations
                         RegistTime = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.UserId);
-            
-            CreateTable(
-                "dbo.CardPool",
-                c => new
-                    {
-                        UserId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.UserId)
-                .ForeignKey("dbo.Player", t => t.UserId)
-                .Index(t => t.UserId);
             
             CreateTable(
                 "dbo.Card",
@@ -69,8 +59,8 @@ namespace DatabaseServer.Migrations
                         UserId = c.Int(nullable: false),
                         DeckIndex = c.Int(nullable: false),
                         Name = c.String(maxLength: 8),
-                        CardId1 = c.Int(),
                         IsDefault = c.Boolean(nullable: false),
+                        CardId1 = c.Int(),
                         CardId2 = c.Int(),
                         CardId3 = c.Int(),
                         CardId4 = c.Int(),
@@ -97,8 +87,58 @@ namespace DatabaseServer.Migrations
                         CardId25 = c.Int(),
                     })
                 .PrimaryKey(t => new { t.UserId, t.DeckIndex })
-                .ForeignKey("dbo.CardPool", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
+                .ForeignKey("dbo.SummonCard", t => t.CardId10)
+                .ForeignKey("dbo.SummonCard", t => t.CardId11)
+                .ForeignKey("dbo.SummonCard", t => t.CardId12)
+                .ForeignKey("dbo.SummonCard", t => t.CardId13)
+                .ForeignKey("dbo.SummonCard", t => t.CardId14)
+                .ForeignKey("dbo.SummonCard", t => t.CardId15)
+                .ForeignKey("dbo.SummonCard", t => t.CardId16)
+                .ForeignKey("dbo.SummonCard", t => t.CardId17)
+                .ForeignKey("dbo.SummonCard", t => t.CardId18)
+                .ForeignKey("dbo.SummonCard", t => t.CardId19)
+                .ForeignKey("dbo.SummonCard", t => t.CardId2)
+                .ForeignKey("dbo.SummonCard", t => t.CardId20)
+                .ForeignKey("dbo.SummonCard", t => t.CardId21)
+                .ForeignKey("dbo.SummonCard", t => t.CardId22)
+                .ForeignKey("dbo.SummonCard", t => t.CardId23)
+                .ForeignKey("dbo.SummonCard", t => t.CardId24)
+                .ForeignKey("dbo.SummonCard", t => t.CardId25)
+                .ForeignKey("dbo.SummonCard", t => t.CardId3)
+                .ForeignKey("dbo.SummonCard", t => t.CardId4)
+                .ForeignKey("dbo.SummonCard", t => t.CardId5)
+                .ForeignKey("dbo.SummonCard", t => t.CardId6)
+                .ForeignKey("dbo.SummonCard", t => t.CardId7)
+                .ForeignKey("dbo.SummonCard", t => t.CardId8)
+                .ForeignKey("dbo.SummonCard", t => t.CardId9)
+                .ForeignKey("dbo.LordCard", t => t.CardId1)
+                .ForeignKey("dbo.Player", t => t.UserId)
+                .Index(t => t.UserId)
+                .Index(t => t.CardId1)
+                .Index(t => t.CardId2)
+                .Index(t => t.CardId3)
+                .Index(t => t.CardId4)
+                .Index(t => t.CardId5)
+                .Index(t => t.CardId6)
+                .Index(t => t.CardId7)
+                .Index(t => t.CardId8)
+                .Index(t => t.CardId9)
+                .Index(t => t.CardId10)
+                .Index(t => t.CardId11)
+                .Index(t => t.CardId12)
+                .Index(t => t.CardId13)
+                .Index(t => t.CardId14)
+                .Index(t => t.CardId15)
+                .Index(t => t.CardId16)
+                .Index(t => t.CardId17)
+                .Index(t => t.CardId18)
+                .Index(t => t.CardId19)
+                .Index(t => t.CardId20)
+                .Index(t => t.CardId21)
+                .Index(t => t.CardId22)
+                .Index(t => t.CardId23)
+                .Index(t => t.CardId24)
+                .Index(t => t.CardId25);
             
             CreateTable(
                 "dbo.Title",
@@ -145,30 +185,30 @@ namespace DatabaseServer.Migrations
                 .Index(t => t.EffectId);
             
             CreateTable(
-                "dbo.CardPool_Card_Mapping",
+                "dbo.CardPool_Mapping",
                 c => new
                     {
-                        CardPoolId = c.Int(nullable: false),
+                        UserId = c.Int(nullable: false),
                         CardId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.CardPoolId, t.CardId })
-                .ForeignKey("dbo.CardPool", t => t.CardPoolId, cascadeDelete: true)
+                .PrimaryKey(t => new { t.UserId, t.CardId })
+                .ForeignKey("dbo.Player", t => t.UserId, cascadeDelete: true)
                 .ForeignKey("dbo.Card", t => t.CardId, cascadeDelete: true)
-                .Index(t => t.CardPoolId)
+                .Index(t => t.UserId)
                 .Index(t => t.CardId);
             
             CreateTable(
                 "dbo.Friend_Mapping",
                 c => new
                     {
-                        UserId_L = c.Int(nullable: false),
-                        UserId_R = c.Int(nullable: false),
+                        UserId_Self = c.Int(nullable: false),
+                        UserId_Friend = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.UserId_L, t.UserId_R })
-                .ForeignKey("dbo.User", t => t.UserId_L)
-                .ForeignKey("dbo.User", t => t.UserId_R)
-                .Index(t => t.UserId_L)
-                .Index(t => t.UserId_R);
+                .PrimaryKey(t => new { t.UserId_Self, t.UserId_Friend })
+                .ForeignKey("dbo.User", t => t.UserId_Self)
+                .ForeignKey("dbo.User", t => t.UserId_Friend)
+                .Index(t => t.UserId_Self)
+                .Index(t => t.UserId_Friend);
             
             CreateTable(
                 "dbo.Player_Title_Mapping",
@@ -207,7 +247,7 @@ namespace DatabaseServer.Migrations
                 .Index(t => t.TitleId);
             
             CreateTable(
-                "dbo.SpellCard",
+                "dbo.SummonCard",
                 c => new
                     {
                         CardId = c.Int(nullable: false),
@@ -218,11 +258,20 @@ namespace DatabaseServer.Migrations
                 .Index(t => t.CardId);
             
             CreateTable(
+                "dbo.SpellCard",
+                c => new
+                    {
+                        CardId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.CardId)
+                .ForeignKey("dbo.SummonCard", t => t.CardId)
+                .Index(t => t.CardId);
+            
+            CreateTable(
                 "dbo.MonsterCard",
                 c => new
                     {
                         CardId = c.Int(nullable: false),
-                        Magnitude = c.Byte(nullable: false),
                         Range = c.Int(nullable: false),
                         Flexibility = c.Int(nullable: false),
                         MonsterAttackAttribute = c.Byte(nullable: false),
@@ -231,7 +280,7 @@ namespace DatabaseServer.Migrations
                         MonsterShield = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.CardId)
-                .ForeignKey("dbo.Card", t => t.CardId)
+                .ForeignKey("dbo.SummonCard", t => t.CardId)
                 .Index(t => t.CardId);
             
             CreateTable(
@@ -253,20 +302,45 @@ namespace DatabaseServer.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.LordCard", "CardId", "dbo.Card");
-            DropForeignKey("dbo.MonsterCard", "CardId", "dbo.Card");
-            DropForeignKey("dbo.SpellCard", "CardId", "dbo.Card");
+            DropForeignKey("dbo.MonsterCard", "CardId", "dbo.SummonCard");
+            DropForeignKey("dbo.SpellCard", "CardId", "dbo.SummonCard");
+            DropForeignKey("dbo.SummonCard", "CardId", "dbo.Card");
             DropForeignKey("dbo.Player", "TitleId", "dbo.Title");
             DropForeignKey("dbo.Player", "AvatarId", "dbo.Avatar");
             DropForeignKey("dbo.Player", "Level", "dbo.Level");
             DropForeignKey("dbo.Player", "UserId", "dbo.User");
             DropForeignKey("dbo.Player_Title_Mapping", "TitleId", "dbo.Title");
             DropForeignKey("dbo.Player_Title_Mapping", "PlayerId", "dbo.Player");
-            DropForeignKey("dbo.Friend_Mapping", "UserId_R", "dbo.User");
-            DropForeignKey("dbo.Friend_Mapping", "UserId_L", "dbo.User");
-            DropForeignKey("dbo.CardPool", "UserId", "dbo.Player");
-            DropForeignKey("dbo.Deck", "UserId", "dbo.CardPool");
-            DropForeignKey("dbo.CardPool_Card_Mapping", "CardId", "dbo.Card");
-            DropForeignKey("dbo.CardPool_Card_Mapping", "CardPoolId", "dbo.CardPool");
+            DropForeignKey("dbo.Friend_Mapping", "UserId_Friend", "dbo.User");
+            DropForeignKey("dbo.Friend_Mapping", "UserId_Self", "dbo.User");
+            DropForeignKey("dbo.Deck", "UserId", "dbo.Player");
+            DropForeignKey("dbo.Deck", "CardId1", "dbo.LordCard");
+            DropForeignKey("dbo.Deck", "CardId9", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId8", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId7", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId6", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId5", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId4", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId3", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId25", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId24", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId23", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId22", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId21", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId20", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId2", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId19", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId18", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId17", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId16", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId15", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId14", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId13", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId12", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId11", "dbo.SummonCard");
+            DropForeignKey("dbo.Deck", "CardId10", "dbo.SummonCard");
+            DropForeignKey("dbo.CardPool_Mapping", "CardId", "dbo.Card");
+            DropForeignKey("dbo.CardPool_Mapping", "UserId", "dbo.Player");
             DropForeignKey("dbo.Card_Effect_Mapping", "EffectId", "dbo.CardEffect");
             DropForeignKey("dbo.Card_Effect_Mapping", "CardId", "dbo.Card");
             DropForeignKey("dbo.Player_Avatar_Mapping", "AvatarId", "dbo.Avatar");
@@ -274,29 +348,55 @@ namespace DatabaseServer.Migrations
             DropIndex("dbo.LordCard", new[] { "CardId" });
             DropIndex("dbo.MonsterCard", new[] { "CardId" });
             DropIndex("dbo.SpellCard", new[] { "CardId" });
+            DropIndex("dbo.SummonCard", new[] { "CardId" });
             DropIndex("dbo.Player", new[] { "TitleId" });
             DropIndex("dbo.Player", new[] { "AvatarId" });
             DropIndex("dbo.Player", new[] { "Level" });
             DropIndex("dbo.Player", new[] { "UserId" });
             DropIndex("dbo.Player_Title_Mapping", new[] { "TitleId" });
             DropIndex("dbo.Player_Title_Mapping", new[] { "PlayerId" });
-            DropIndex("dbo.Friend_Mapping", new[] { "UserId_R" });
-            DropIndex("dbo.Friend_Mapping", new[] { "UserId_L" });
-            DropIndex("dbo.CardPool_Card_Mapping", new[] { "CardId" });
-            DropIndex("dbo.CardPool_Card_Mapping", new[] { "CardPoolId" });
+            DropIndex("dbo.Friend_Mapping", new[] { "UserId_Friend" });
+            DropIndex("dbo.Friend_Mapping", new[] { "UserId_Self" });
+            DropIndex("dbo.CardPool_Mapping", new[] { "CardId" });
+            DropIndex("dbo.CardPool_Mapping", new[] { "UserId" });
             DropIndex("dbo.Card_Effect_Mapping", new[] { "EffectId" });
             DropIndex("dbo.Card_Effect_Mapping", new[] { "CardId" });
             DropIndex("dbo.Player_Avatar_Mapping", new[] { "AvatarId" });
             DropIndex("dbo.Player_Avatar_Mapping", new[] { "PlayerId" });
+            DropIndex("dbo.Deck", new[] { "CardId25" });
+            DropIndex("dbo.Deck", new[] { "CardId24" });
+            DropIndex("dbo.Deck", new[] { "CardId23" });
+            DropIndex("dbo.Deck", new[] { "CardId22" });
+            DropIndex("dbo.Deck", new[] { "CardId21" });
+            DropIndex("dbo.Deck", new[] { "CardId20" });
+            DropIndex("dbo.Deck", new[] { "CardId19" });
+            DropIndex("dbo.Deck", new[] { "CardId18" });
+            DropIndex("dbo.Deck", new[] { "CardId17" });
+            DropIndex("dbo.Deck", new[] { "CardId16" });
+            DropIndex("dbo.Deck", new[] { "CardId15" });
+            DropIndex("dbo.Deck", new[] { "CardId14" });
+            DropIndex("dbo.Deck", new[] { "CardId13" });
+            DropIndex("dbo.Deck", new[] { "CardId12" });
+            DropIndex("dbo.Deck", new[] { "CardId11" });
+            DropIndex("dbo.Deck", new[] { "CardId10" });
+            DropIndex("dbo.Deck", new[] { "CardId9" });
+            DropIndex("dbo.Deck", new[] { "CardId8" });
+            DropIndex("dbo.Deck", new[] { "CardId7" });
+            DropIndex("dbo.Deck", new[] { "CardId6" });
+            DropIndex("dbo.Deck", new[] { "CardId5" });
+            DropIndex("dbo.Deck", new[] { "CardId4" });
+            DropIndex("dbo.Deck", new[] { "CardId3" });
+            DropIndex("dbo.Deck", new[] { "CardId2" });
+            DropIndex("dbo.Deck", new[] { "CardId1" });
             DropIndex("dbo.Deck", new[] { "UserId" });
-            DropIndex("dbo.CardPool", new[] { "UserId" });
             DropTable("dbo.LordCard");
             DropTable("dbo.MonsterCard");
             DropTable("dbo.SpellCard");
+            DropTable("dbo.SummonCard");
             DropTable("dbo.Player");
             DropTable("dbo.Player_Title_Mapping");
             DropTable("dbo.Friend_Mapping");
-            DropTable("dbo.CardPool_Card_Mapping");
+            DropTable("dbo.CardPool_Mapping");
             DropTable("dbo.Card_Effect_Mapping");
             DropTable("dbo.Player_Avatar_Mapping");
             DropTable("dbo.Level");
@@ -304,7 +404,6 @@ namespace DatabaseServer.Migrations
             DropTable("dbo.Deck");
             DropTable("dbo.CardEffect");
             DropTable("dbo.Card");
-            DropTable("dbo.CardPool");
             DropTable("dbo.User");
             DropTable("dbo.Avatar");
         }

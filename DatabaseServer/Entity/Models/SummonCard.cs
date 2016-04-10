@@ -2,13 +2,13 @@
 // Copyright (C) 2016-2017 Rival
 // 版权所有
 //
-// 文件名：CardPool.cs
+// 文件名：SummonCard.cs
 //
 // 文件功能描述：
 //
-// CardPool 实体
+// SummonCard 实体
 //
-// 创建标识：taixihuase 20160407
+// 创建标识：taixihuase 20160410
 //
 // 修改标识：
 // 修改描述：
@@ -19,25 +19,17 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace DatabaseServer.Entity.Models
 {
     /// <summary>
     /// 类型：类
-    /// 名称：CardLibrary
+    /// 名称：SummonCard
     /// 作者：taixihuase
-    /// 作用：CardPool 实体
-    /// 编写日期：2016/4/7
+    /// 作用：SummonCard 实体
+    /// 编写日期：2016/4/10
     /// </summary>
-    public class CardPool
+    public class SummonCard : Card
     {
-        public int Id { get; set; }
-
-        public virtual Player Player { get; set; }
-
-        public virtual ICollection<Card> Cards { get; set; } = new List<Card>(); 
-
-        public virtual ICollection<Deck> Decks { get; set; } = new List<Deck>(); 
+        public MagnitudeType Magnitude { get; set; }
     }
 }

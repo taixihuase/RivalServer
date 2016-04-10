@@ -56,6 +56,8 @@ namespace DatabaseServer.Entity.Models
 
         public int Total { get; set; }
 
-        public virtual CardPool CardLibrary { get; set; }
+        public virtual ICollection<Card> Cards { get; set; } = new List<Card>();
+
+        public virtual ICollection<Deck> Decks { get; set; } = new List<Deck>();
     }
 }

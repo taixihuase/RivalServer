@@ -28,8 +28,8 @@ namespace DatabaseServer.Entity.Models
     /// 作用：SpellCard 实体
     /// 编写日期：2016/4/4
     /// </summary>
-    public class SpellCard : Card
+    public class SpellCard : SummonCard
     {
-        public MagnitudeType Magnitude { get; set; }
+
     }
 }

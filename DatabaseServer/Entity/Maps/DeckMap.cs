@@ -54,36 +54,38 @@ namespace DatabaseServer.Entity.Maps
 
             Property(t => t.IsDefault).HasColumnName("IsDefault");
 
-            HasRequired(t => t.CardPool).WithMany(t => t.Decks).WillCascadeOnDelete();
+            HasRequired(t => t.Player).WithMany(t => t.Decks).WillCascadeOnDelete();
 
-            Property(t => t.LordCardId).HasColumnName("CardId1").IsOptional();
+            HasOptional(t => t.LordCard).WithMany().HasForeignKey(t => t.LordCardId);
+
+            Property(t => t.LordCardId).HasColumnName("CardId1");
 
             #region CardId Mapping
 
-            Property(t => t.CardId2).IsOptional();
-            Property(t => t.CardId3).IsOptional();
-            Property(t => t.CardId4).IsOptional();
-            Property(t => t.CardId5).IsOptional();
-            Property(t => t.CardId6).IsOptional();
-            Property(t => t.CardId7).IsOptional();
-            Property(t => t.CardId8).IsOptional();
-            Property(t => t.CardId9).IsOptional();
-            Property(t => t.CardId10).IsOptional();
-            Property(t => t.CardId11).IsOptional();
-            Property(t => t.CardId12).IsOptional();
-            Property(t => t.CardId13).IsOptional();
-            Property(t => t.CardId14).IsOptional();
-            Property(t => t.CardId15).IsOptional();
-            Property(t => t.CardId16).IsOptional();
-            Property(t => t.CardId17).IsOptional();
-            Property(t => t.CardId18).IsOptional();
-            Property(t => t.CardId19).IsOptional();
-            Property(t => t.CardId20).IsOptional();
-            Property(t => t.CardId21).IsOptional();
-            Property(t => t.CardId22).IsOptional();
-            Property(t => t.CardId23).IsOptional();
-            Property(t => t.CardId24).IsOptional();
-            Property(t => t.CardId25).IsOptional();
+            HasOptional(t => t.Card2).WithMany().HasForeignKey(t => t.CardId2);
+            HasOptional(t => t.Card3).WithMany().HasForeignKey(t => t.CardId3);
+            HasOptional(t => t.Card4).WithMany().HasForeignKey(t => t.CardId4);
+            HasOptional(t => t.Card5).WithMany().HasForeignKey(t => t.CardId5);
+            HasOptional(t => t.Card6).WithMany().HasForeignKey(t => t.CardId6);
+            HasOptional(t => t.Card7).WithMany().HasForeignKey(t => t.CardId7);
+            HasOptional(t => t.Card8).WithMany().HasForeignKey(t => t.CardId8);
+            HasOptional(t => t.Card9).WithMany().HasForeignKey(t => t.CardId9);
+            HasOptional(t => t.Card10).WithMany().HasForeignKey(t => t.CardId10);
+            HasOptional(t => t.Card11).WithMany().HasForeignKey(t => t.CardId11);
+            HasOptional(t => t.Card12).WithMany().HasForeignKey(t => t.CardId12);
+            HasOptional(t => t.Card13).WithMany().HasForeignKey(t => t.CardId13);
+            HasOptional(t => t.Card14).WithMany().HasForeignKey(t => t.CardId14);
+            HasOptional(t => t.Card15).WithMany().HasForeignKey(t => t.CardId15);
+            HasOptional(t => t.Card16).WithMany().HasForeignKey(t => t.CardId16);
+            HasOptional(t => t.Card17).WithMany().HasForeignKey(t => t.CardId17);
+            HasOptional(t => t.Card18).WithMany().HasForeignKey(t => t.CardId18);
+            HasOptional(t => t.Card19).WithMany().HasForeignKey(t => t.CardId19);
+            HasOptional(t => t.Card20).WithMany().HasForeignKey(t => t.CardId20);
+            HasOptional(t => t.Card21).WithMany().HasForeignKey(t => t.CardId21);
+            HasOptional(t => t.Card22).WithMany().HasForeignKey(t => t.CardId22);
+            HasOptional(t => t.Card23).WithMany().HasForeignKey(t => t.CardId23);
+            HasOptional(t => t.Card24).WithMany().HasForeignKey(t => t.CardId24);
+            HasOptional(t => t.Card25).WithMany().HasForeignKey(t => t.CardId25);
 
             #endregion
         }

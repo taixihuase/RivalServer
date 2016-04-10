@@ -59,17 +59,21 @@ namespace DatabaseServer.Entity.Maps
                     ef.MapRightKey("EffectId");
                 });
             }).ToTable("Card");
- 
+
+            Map<SummonCard>(m =>
+            {
+                m.ToTable("SummonCard");
+                Property(t => t.MainAttribute).HasColumnName("MainAttribute");
+            });
+
             Map<SpellCard>(m =>
             {
                 m.ToTable("SpellCard");
-                m.Property(t => t.Magnitude).HasColumnName("Magnitude");
             });
 
             Map<MonsterCard>(m =>
             {
                 m.ToTable("MonsterCard");
-                m.Property(t => t.Magnitude).HasColumnName("Magnitude");
                 m.Property(t => t.Flexibility).HasColumnName("Flexibility");
                 m.Property(t => t.Range).HasColumnName("Range");
                 m.Property(t => t.CombatAttribute.AttackAttribute).HasColumnName("MonsterAttackAttribute");

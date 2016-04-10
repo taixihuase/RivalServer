@@ -91,7 +91,6 @@ namespace DatabaseServer.Entity.Context
                 .Add(new CardMap())
                 .Add(new CombatAttributeMap())
                 .Add(new CardEffectMap())
-                .Add(new CardPoolMap())
                 .Add(new DeckMap());
             
             base.OnModelCreating(modelBuilder);
