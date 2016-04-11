@@ -27,19 +27,19 @@ namespace DatabaseServer.Entity.Maps
 {
     /// <summary>
     /// 类型：类
-    /// 名称：AvatarMap
+    /// 名称：CardEffectMap
     /// 作者：taixihuase
     /// 作用：映射 CardEffect 实体到 CardEffect 表
-    /// 编写日期：2016/4/4
+    /// 编写日期：2016/4/5
     /// </summary>
     public class CardEffectMap : EntityTypeConfiguration<CardEffect>
     {
         /// <summary>
         /// 类型：方法
-        /// 名称：AvatarMap
+        /// 名称：CardEffectMap
         /// 作者：taixihuase
-        /// 作用：配置 Avatar 实体映射
-        /// 编写日期：2016/4/4
+        /// 作用：配置 CardEffect 实体映射
+        /// 编写日期：2016/4/5
         /// </summary>
         public CardEffectMap()
         {

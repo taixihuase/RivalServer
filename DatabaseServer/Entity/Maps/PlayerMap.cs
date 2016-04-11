@@ -42,25 +42,17 @@ namespace DatabaseServer.Entity.Maps
         /// </summary>
         public PlayerMap()
         {
-            ToTable("Player");
-
-            HasKey(t => t.Id);
-
-            HasRequired(t => t.User).WithOptional(t => t.Player).WillCascadeOnDelete();
-
-            Property(t => t.Id).HasColumnName("UserId");
-
             Property(t => t.LevelId).HasColumnName("Level");
 
-            HasRequired(t => t.Level).WithMany(t => t.Players).WillCascadeOnDelete(false);
+            HasRequired(t => t.Level).WithMany();
 
             Property(t => t.Experience).HasColumnName("Experience");
 
             Property(t => t.DefaultAvatarId).HasColumnName("AvatarId");
 
-            HasRequired(t => t.DefaultAvatar).WithMany(t =>t.DefaultPlayers).WillCascadeOnDelete(false);
+            HasRequired(t => t.DefaultAvatar).WithMany().WillCascadeOnDelete(false);
 
-            HasMany(t => t.Avatars).WithMany(t => t.Players).Map(m =>
+            HasMany(t => t.Avatars).WithMany().Map(m =>
             {
                 m.ToTable("Player_Avatar_Mapping");
                 m.MapLeftKey("PlayerId");
@@ -69,9 +61,9 @@ namespace DatabaseServer.Entity.Maps
 
             Property(t => t.DefaultTitleId).HasColumnName("TitleId");
 
-            HasRequired(t => t.DefaultTitle).WithMany(t => t.DefaultPlayers).WillCascadeOnDelete(false);
+            HasRequired(t => t.DefaultTitle).WithMany().WillCascadeOnDelete(false);
 
-            HasMany(t => t.Titles).WithMany(t => t.Players).Map(m =>
+            HasMany(t => t.Titles).WithMany().Map(m =>
             {
                 m.ToTable("Player_Title_Mapping");
                 m.MapLeftKey("PlayerId");
@@ -84,7 +76,12 @@ namespace DatabaseServer.Entity.Maps
 
             Property(t => t.Total).HasColumnName("Total");
 
-            HasRequired(t => t.CardLibrary).WithRequiredPrincipal(t => t.Player).WillCascadeOnDelete();
+            HasMany(t => t.Cards).WithMany().Map(m =>
+            {
+                m.ToTable("CardPool_Mapping");
+                m.MapLeftKey("UserId");
+                m.MapRightKey("CardId");
+            });
         }
     }
 }

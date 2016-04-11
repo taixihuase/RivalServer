@@ -38,39 +38,16 @@ namespace DatabaseServer.Entity.Models
 
         public string Name { get; set; }
 
-        public virtual CardPool CardPool { get; set; }
-
-        public int LordCardId { get; set; }
+        public virtual Player Player { get; set; }
 
         public bool IsDefault { get; set; }
 
-        #region CardId
+        public int? LordCardId { get; set; }
 
-        public int CardId2 { get; set; }
-        public int CardId3 { get; set; }
-        public int CardId4 { get; set; }
-        public int CardId5 { get; set; }
-        public int CardId6 { get; set; }
-        public int CardId7 { get; set; }
-        public int CardId8 { get; set; }
-        public int CardId9 { get; set; }
-        public int CardId10 { get; set; }
-        public int CardId11 { get; set; }
-        public int CardId12 { get; set; }
-        public int CardId13 { get; set; }
-        public int CardId14 { get; set; }
-        public int CardId15 { get; set; }
-        public int CardId16 { get; set; }
-        public int CardId17 { get; set; }
-        public int CardId18 { get; set; }
-        public int CardId19 { get; set; }
-        public int CardId20 { get; set; }
-        public int CardId21 { get; set; }
-        public int CardId22 { get; set; }
-        public int CardId23 { get; set; }
-        public int CardId24 { get; set; }
-        public int CardId25 { get; set; }
+        public virtual LordCard LordCard { get; set; }
 
-        #endregion
+        public virtual ICollection<SummonCard> SummonCards { get; set; } = new List<SummonCard>(24);
+   
+        public int CardCount { get; set; }
     }
 }

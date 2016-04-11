@@ -54,38 +54,20 @@ namespace DatabaseServer.Entity.Maps
 
             Property(t => t.IsDefault).HasColumnName("IsDefault");
 
-            HasRequired(t => t.CardPool).WithMany(t => t.Decks).WillCascadeOnDelete();
+            HasRequired(t => t.Player).WithMany(t => t.Decks).HasForeignKey(t => t.Id).WillCascadeOnDelete();
 
-            Property(t => t.LordCardId).HasColumnName("CardId1").IsOptional();
+            HasOptional(t => t.LordCard).WithMany().HasForeignKey(t => t.LordCardId);
 
-            #region CardId Mapping
+            Property(t => t.LordCardId).HasColumnName("LordCardId");
 
-            Property(t => t.CardId2).IsOptional();
-            Property(t => t.CardId3).IsOptional();
-            Property(t => t.CardId4).IsOptional();
-            Property(t => t.CardId5).IsOptional();
-            Property(t => t.CardId6).IsOptional();
-            Property(t => t.CardId7).IsOptional();
-            Property(t => t.CardId8).IsOptional();
-            Property(t => t.CardId9).IsOptional();
-            Property(t => t.CardId10).IsOptional();
-            Property(t => t.CardId11).IsOptional();
-            Property(t => t.CardId12).IsOptional();
-            Property(t => t.CardId13).IsOptional();
-            Property(t => t.CardId14).IsOptional();
-            Property(t => t.CardId15).IsOptional();
-            Property(t => t.CardId16).IsOptional();
-            Property(t => t.CardId17).IsOptional();
-            Property(t => t.CardId18).IsOptional();
-            Property(t => t.CardId19).IsOptional();
-            Property(t => t.CardId20).IsOptional();
-            Property(t => t.CardId21).IsOptional();
-            Property(t => t.CardId22).IsOptional();
-            Property(t => t.CardId23).IsOptional();
-            Property(t => t.CardId24).IsOptional();
-            Property(t => t.CardId25).IsOptional();
+            HasMany(t => t.SummonCards).WithMany().Map(m =>
+            {
+                m.ToTable("Deck_Card_Mapping");
+                m.MapLeftKey("UserId", "DeckIndex");
+                m.MapRightKey("CardId");
+            });
 
-            #endregion
+            Property(t => t.CardCount).HasColumnName("CardCount");
         }
     }
 }

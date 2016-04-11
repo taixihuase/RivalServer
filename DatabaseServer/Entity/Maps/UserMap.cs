@@ -19,6 +19,7 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using DatabaseServer.Entity.Models;
@@ -42,27 +43,33 @@ namespace DatabaseServer.Entity.Maps
         /// 编写日期：2016/3/22
         /// </summary>
         public UserMap()
-        {
-            ToTable("User");
-
+        {           
             HasKey(t => t.Id);
 
-            Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("UserId");
-
-            Property(t => t.Account).IsRequired().HasMaxLength(30).HasColumnName("Account");
-
-            Property(t => t.Nickname).IsRequired().HasMaxLength(10).HasColumnName("Nickname");
-
-            Property(t => t.Password).IsRequired().HasMaxLength(30).HasColumnName("Password");
-
-            Property(t => t.RegistTime).IsRequired().HasColumnName("RegistTime");
-
-            HasMany(t => t.Friends).WithMany().Map(m =>
+            Map<User>(m =>
             {
-                m.ToTable("Friend_Mapping");
-                m.MapLeftKey("UserId_L");
-                m.MapRightKey("UserId_R");
-            });
+                Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("UserId");
+
+                Property(t => t.Account).IsRequired().HasMaxLength(30).HasColumnName("Account");
+
+                Property(t => t.Nickname).IsRequired().HasMaxLength(10).HasColumnName("Nickname");
+
+                Property(t => t.Password).IsRequired().HasMaxLength(30).HasColumnName("Password");
+
+                Property(t => t.RegistTime).IsRequired().HasColumnName("RegistTime");
+
+                HasMany(t => t.Friends).WithMany().Map(f =>
+                {
+                    f.ToTable("Friend_Mapping");
+                    f.MapLeftKey("UserId_Self");
+                    f.MapRightKey("UserId_Friend");
+                });
+            }).ToTable("User");
+
+           Map<Player>(m =>
+           {
+               m.ToTable("Player");
+           });
         }
     }
 }

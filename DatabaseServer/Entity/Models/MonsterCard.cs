@@ -28,10 +28,8 @@ namespace DatabaseServer.Entity.Models
     /// 作用：MonsterCard 实体
     /// 编写日期：2016/4/4
     /// </summary>
-    public class MonsterCard : Card
+    public class MonsterCard : SummonCard
     {      
-        public MagnitudeType Magnitude { get; set; }
-
         public int Range { get; set; }
 
         public int Flexibility { get; set; }

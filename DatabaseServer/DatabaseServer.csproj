@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseServerApplication.cs" />
+    <Compile Include="Entity\Maps\CardPackMap.cs" />
     <Compile Include="Entity\Maps\CardEffectMap.cs" />
     <Compile Include="Entity\Maps\DeckMap.cs" />
     <Compile Include="Entity\Maps\CombatAttributeMap.cs" />
@@ -154,13 +155,13 @@
     <Compile Include="Entity\Maps\AvatarMap.cs" />
     <Compile Include="Entity\Context\IUnitOfWork.cs" />
     <Compile Include="Entity\Maps\PlayerMap.cs" />
-    <Compile Include="Entity\Maps\CardPoolMap.cs" />
     <Compile Include="Entity\Maps\UserMap.cs" />
     <Compile Include="Entity\Context\UpdateDatabase.cs" />
     <Compile Include="Entity\Context\RivalContext.cs" />
     <Compile Include="Entity\Context\RivalInitializer.cs" />
     <Compile Include="Entity\Models\Avatar.cs" />
     <Compile Include="Entity\Models\Card.cs" />
+    <Compile Include="Entity\Models\CardPack.cs" />
     <Compile Include="Entity\Models\CardEffect.cs" />
     <Compile Include="Entity\Models\Deck.cs" />
     <Compile Include="Entity\Models\CombatAttribute.cs" />
@@ -168,17 +169,29 @@
     <Compile Include="Entity\Models\LordCard.cs" />
     <Compile Include="Entity\Models\MonsterCard.cs" />
     <Compile Include="Entity\Models\Player.cs" />
+    <Compile Include="Entity\Models\SummonCard.cs" />
     <Compile Include="Entity\Models\SpellCard.cs" />
     <Compile Include="Entity\Models\Title.cs" />
-    <Compile Include="Entity\Models\CardPool.cs" />
     <Compile Include="Entity\Models\User.cs" />
-    <Compile Include="Migrations\201604051417384_2216.cs" />
-    <Compile Include="Migrations\201604051417384_2216.Designer.cs">
-      <DependentUpon>201604051417384_2216.cs</DependentUpon>
+    <Compile Include="Migrations\201604101430358_2230.cs" />
+    <Compile Include="Migrations\201604101430358_2230.Designer.cs">
+      <DependentUpon>201604101430358_2230.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604071741241_0141.cs" />
-    <Compile Include="Migrations\201604071741241_0141.Designer.cs">
-      <DependentUpon>201604071741241_0141.cs</DependentUpon>
+    <Compile Include="Migrations\201604111501180_2300.cs" />
+    <Compile Include="Migrations\201604111501180_2300.Designer.cs">
+      <DependentUpon>201604111501180_2300.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604111526041_2325.cs" />
+    <Compile Include="Migrations\201604111526041_2325.Designer.cs">
+      <DependentUpon>201604111526041_2325.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604111539146_2339.cs" />
+    <Compile Include="Migrations\201604111539146_2339.Designer.cs">
+      <DependentUpon>201604111539146_2339.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604111545161_2345.cs" />
+    <Compile Include="Migrations\201604111545161_2345.Designer.cs">
+      <DependentUpon>201604111545161_2345.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PeerToMasterServer.cs" />
@@ -211,11 +224,20 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604051417384_2216.resx">
-      <DependentUpon>201604051417384_2216.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604101430358_2230.resx">
+      <DependentUpon>201604101430358_2230.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604071741241_0141.resx">
-      <DependentUpon>201604071741241_0141.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604111501180_2300.resx">
+      <DependentUpon>201604111501180_2300.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604111526041_2325.resx">
+      <DependentUpon>201604111526041_2325.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604111539146_2339.resx">
+      <DependentUpon>201604111539146_2339.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604111545161_2345.resx">
+      <DependentUpon>201604111545161_2345.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

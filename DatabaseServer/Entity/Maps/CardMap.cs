@@ -51,25 +51,31 @@ namespace DatabaseServer.Entity.Maps
                 Property(t => t.Name).IsRequired().HasMaxLength(10).HasColumnName("Name");
                 Property(t => t.Type).HasColumnName("Type");
                 Property(t => t.MainAttribute).HasColumnName("MainAttribute");
-                Property(t => t.Rarity).IsRequired().HasColumnName("Rarity");
-                HasMany(t => t.CardEffects).WithMany(t => t.Cards).Map(ef =>
+                Property(t => t.Rarity).HasColumnName("Rarity");
+                HasMany(t => t.CardEffects).WithMany().Map(ef =>
                 {
                     ef.ToTable("Card_Effect_Mapping");
                     ef.MapLeftKey("CardId");
                     ef.MapRightKey("EffectId");
                 });
+                HasOptional(t => t.CardPack).WithMany(t => t.Cards).HasForeignKey(t => t.CardPackId).WillCascadeOnDelete(false);
+                Property(t => t.CardPackId).HasColumnName("CardPackId");
             }).ToTable("Card");
- 
+
+            Map<SummonCard>(m =>
+            {
+                m.ToTable("SummonCard");
+                Property(t => t.MainAttribute).HasColumnName("MainAttribute");
+            });
+
             Map<SpellCard>(m =>
             {
                 m.ToTable("SpellCard");
-                m.Property(t => t.Magnitude).HasColumnName("Magnitude");
             });
 
             Map<MonsterCard>(m =>
             {
                 m.ToTable("MonsterCard");
-                m.Property(t => t.Magnitude).HasColumnName("Magnitude");
                 m.Property(t => t.Flexibility).HasColumnName("Flexibility");
                 m.Property(t => t.Range).HasColumnName("Range");
                 m.Property(t => t.CombatAttribute.AttackAttribute).HasColumnName("MonsterAttackAttribute");

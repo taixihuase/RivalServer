@@ -30,12 +30,8 @@ namespace DatabaseServer.Entity.Models
     /// 作用：Player 实体
     /// 编写日期：2016/4/4
     /// </summary>
-    public class Player
+    public class Player : User
     {
-        public int Id { get; set; }
-
-        public User User { get; set; }
-
         public int LevelId { get; set; }
 
         public virtual Level Level { get; set; }
@@ -60,6 +56,8 @@ namespace DatabaseServer.Entity.Models
 
         public int Total { get; set; }
 
-        public virtual CardPool CardLibrary { get; set; }
+        public virtual ICollection<Card> Cards { get; set; } = new List<Card>();
+
+        public virtual ICollection<Deck> Decks { get; set; } = new List<Deck>();
     }
 }

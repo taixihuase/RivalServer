@@ -80,7 +80,5 @@ namespace DatabaseServer.Entity.Models
         public string Description { get; set; }
 
         public int? Value { get; set; }
-
-        public virtual ICollection<Card> Cards { get; set; } = new List<Card>();
     }
 }
