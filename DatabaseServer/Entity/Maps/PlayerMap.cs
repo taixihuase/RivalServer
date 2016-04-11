@@ -44,7 +44,7 @@ namespace DatabaseServer.Entity.Maps
         {
             Property(t => t.LevelId).HasColumnName("Level");
 
-            HasRequired(t => t.Level).WithMany(t => t.Players).WillCascadeOnDelete(false);
+            HasRequired(t => t.Level).WithMany();
 
             Property(t => t.Experience).HasColumnName("Experience");
 

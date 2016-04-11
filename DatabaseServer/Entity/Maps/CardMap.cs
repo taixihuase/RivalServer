@@ -52,12 +52,14 @@ namespace DatabaseServer.Entity.Maps
                 Property(t => t.Type).HasColumnName("Type");
                 Property(t => t.MainAttribute).HasColumnName("MainAttribute");
                 Property(t => t.Rarity).HasColumnName("Rarity");
-                HasMany(t => t.CardEffects).WithMany(t => t.Cards).Map(ef =>
+                HasMany(t => t.CardEffects).WithMany().Map(ef =>
                 {
                     ef.ToTable("Card_Effect_Mapping");
                     ef.MapLeftKey("CardId");
                     ef.MapRightKey("EffectId");
                 });
+                HasOptional(t => t.CardPack).WithMany(t => t.Cards).HasForeignKey(t => t.CardPackId).WillCascadeOnDelete(false);
+                Property(t => t.CardPackId).HasColumnName("CardPackId");
             }).ToTable("Card");
 
             Map<SummonCard>(m =>

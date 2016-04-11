@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseServerApplication.cs" />
+    <Compile Include="Entity\Maps\CardPackMap.cs" />
     <Compile Include="Entity\Maps\CardEffectMap.cs" />
     <Compile Include="Entity\Maps\DeckMap.cs" />
     <Compile Include="Entity\Maps\CombatAttributeMap.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="Entity\Context\RivalInitializer.cs" />
     <Compile Include="Entity\Models\Avatar.cs" />
     <Compile Include="Entity\Models\Card.cs" />
+    <Compile Include="Entity\Models\CardPack.cs" />
     <Compile Include="Entity\Models\CardEffect.cs" />
     <Compile Include="Entity\Models\Deck.cs" />
     <Compile Include="Entity\Models\CombatAttribute.cs" />
@@ -174,6 +176,22 @@
     <Compile Include="Migrations\201604101430358_2230.cs" />
     <Compile Include="Migrations\201604101430358_2230.Designer.cs">
       <DependentUpon>201604101430358_2230.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604111501180_2300.cs" />
+    <Compile Include="Migrations\201604111501180_2300.Designer.cs">
+      <DependentUpon>201604111501180_2300.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604111526041_2325.cs" />
+    <Compile Include="Migrations\201604111526041_2325.Designer.cs">
+      <DependentUpon>201604111526041_2325.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604111539146_2339.cs" />
+    <Compile Include="Migrations\201604111539146_2339.Designer.cs">
+      <DependentUpon>201604111539146_2339.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604111545161_2345.cs" />
+    <Compile Include="Migrations\201604111545161_2345.Designer.cs">
+      <DependentUpon>201604111545161_2345.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PeerToMasterServer.cs" />
@@ -208,6 +226,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201604101430358_2230.resx">
       <DependentUpon>201604101430358_2230.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604111501180_2300.resx">
+      <DependentUpon>201604111501180_2300.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604111526041_2325.resx">
+      <DependentUpon>201604111526041_2325.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604111539146_2339.resx">
+      <DependentUpon>201604111539146_2339.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604111545161_2345.resx">
+      <DependentUpon>201604111545161_2345.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

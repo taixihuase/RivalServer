@@ -35,7 +35,5 @@ namespace DatabaseServer.Entity.Models
         public int Id { get; set; }
 
         public int UpgradeExp { get; set; }
-
-        public virtual ICollection<Player> Players { get; set; } = new List<Player>();
     }
 }

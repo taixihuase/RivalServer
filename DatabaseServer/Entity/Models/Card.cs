@@ -117,6 +117,8 @@ namespace DatabaseServer.Entity.Models
             [Description("6")] Six
         }
 
-        //public virtual ICollection<CardPool> CardPools { get; set; } = new List<CardPool>(); 
+        public virtual CardPack CardPack { get; set; }
+
+        public int? CardPackId { get; set; }
     }
 }
