@@ -2,11 +2,11 @@
 // Copyright (C) 2016-2017 Rival
 // 版权所有
 //
-// 文件名：RegistInfo.cs
+// 文件名：LoginInfo.cs
 //
 // 文件功能描述：
 //
-// 注册新账号信息
+// 账号登录参数，存放登录操作的账号及密码
 //
 // 创建标识：taixihuase 20160315
 //
@@ -20,33 +20,26 @@
 //----------------------------------------------------------------------------------------------------------
 
 using ProtoBuf;
-using static System.String;
 
-namespace C2SProtocol.User
+namespace C2SProtocol.Data
 {
     /// <summary>
     /// 类型：类
-    /// 名称：RegistInfo
+    /// 名称：LoginInfo
     /// 作者：taixihuase
-    /// 作用：注册账号信息
+    /// 作用：记录登录数据并用于传输
     /// 编写日期：2016/3/15
     /// </summary>
     [ProtoContract]
-    public class RegistInfo
+    public class LoginInfo
     {
-        [ProtoMember(1, IsRequired = true)]
-        public string Email { get; set; }
+        [ProtoMember(1)]
+        public string Account { get; set; }
 
-        [ProtoMember(2, IsRequired = true)]
-        public string Nickname { get; set; }
-
-        [ProtoMember(3, IsRequired = true)]
+        [ProtoMember(2)]
         public string Password { get; set; }
 
-        [ProtoMember(4, IsRequired = true)]
-        public string Captcha { get; set; }
-
-        [ProtoMember(5, IsRequired = true)]
+        [ProtoMember(3)]
         public CheckStatus Status { get; set; }
 
         /// <summary>
@@ -59,47 +52,39 @@ namespace C2SProtocol.User
         public enum CheckStatus
         {
             Unchecked,
-            EmailExist,
-            EmailNotExist,
-            CaptchaNotObtained,
-            CaptchaMatched,
-            CaptchaNotMatched,
+            AccountAlreadyLogged,
+            AccountNotExist,
+            PasswordWrong,
             Ok,
         }
 
         /// <summary>
         /// 类型：方法
-        /// 名称：RegistInfo
+        /// 名称：LoginInfo
         /// 作者：taixihuase
-        /// 作用：通过邮箱、昵称、密码和验证码构造注册数据
+        /// 作用：通过账号名和密码构造登陆数据
         /// 编写日期：2016/3/15
         /// </summary>
-        /// <param name="email"></param>
-        /// <param name="nickname"></param>
+        /// <param name="account"></param>
         /// <param name="password"></param>
-        /// <param name="captcha"></param>
-        public RegistInfo(string email, string nickname, string password, string captcha)
+        public LoginInfo(string account, string password)
         {
-            Email = email;
-            Nickname = nickname;
+            Account = account;
             Password = password;
-            Captcha = captcha;
             Status = CheckStatus.Unchecked;
         }
 
         /// <summary>
         /// 类型：方法
-        /// 名称：RegistInfo
+        /// 名称：LoginInfo
         /// 作者：taixihuase
-        /// 作用：默认构造注册数据
+        /// 作用：默认构造登陆数据
         /// 编写日期：2016/3/15
         /// </summary>
-        public RegistInfo()
+        public LoginInfo()
         {
-            Email = Empty;
-            Nickname = Empty;
-            Password = Empty;
-            Captcha = Empty;
+            Account = string.Empty;
+            Password = string.Empty;
             Status = CheckStatus.Unchecked;
         }
 

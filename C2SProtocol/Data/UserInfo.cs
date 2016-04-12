@@ -20,9 +20,8 @@
 //----------------------------------------------------------------------------------------------------------
 
 using ProtoBuf;
-using static System.String;
 
-namespace C2SProtocol.User
+namespace C2SProtocol.Data
 {
     /// <summary>
     /// 类型：类
@@ -34,16 +33,16 @@ namespace C2SProtocol.User
     [ProtoContract]
     public class UserInfo
     {
-        [ProtoMember(1, IsRequired = true)]
+        [ProtoMember(1)]
         public uint UniqueId { get; set; }
 
-        [ProtoMember(2, IsRequired = true)]
+        [ProtoMember(2)]
         public string Account { get; set; }
 
-        [ProtoMember(3, IsRequired = true)]
+        [ProtoMember(3)]
         public string Nickname { get; set; }
 
-        [ProtoMember(4, IsRequired = true)]
+        [ProtoMember(4)]
         public UserStatus Status { get; set; }
 
         /// <summary>
@@ -91,8 +90,8 @@ namespace C2SProtocol.User
         public UserInfo()
         {
             UniqueId = uint.MinValue;
-            Account = Empty;
-            Nickname = Empty;
+            Account = string.Empty;
+            Nickname = string.Empty;
             Status = UserStatus.Offline;
         }
 

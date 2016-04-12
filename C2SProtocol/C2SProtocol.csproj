@@ -96,15 +96,21 @@
     <Compile Include="Common\C2SOpCode.cs" />
     <Compile Include="Common\C2SParaCode.cs" />
     <Compile Include="Common\C2SRetCode.cs" />
+    <Compile Include="Data\CardEffectInfo.cs" />
+    <Compile Include="Data\CardInfo.cs" />
+    <Compile Include="Data\CardPackInfo.cs" />
+    <Compile Include="Data\TitleInfo.cs" />
+    <Compile Include="Data\AvatarInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\ServerSettings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>ServerSettings.settings</DependentUpon>
     </Compile>
-    <Compile Include="User\LoginInfo.cs" />
-    <Compile Include="User\UserInfo.cs" />
-    <Compile Include="User\RegistInfo.cs" />
+    <Compile Include="Data\LoginInfo.cs" />
+    <Compile Include="Data\PlayerInfo.cs" />
+    <Compile Include="Data\UserInfo.cs" />
+    <Compile Include="Data\RegistInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -21,7 +21,6 @@
 
 using System.Collections.Generic;
 using C2SProtocol.Common;
-using C2SProtocol.User;
 using Photon.SocketServer;
 using Protocol;
 using S2SProtocol.Common;

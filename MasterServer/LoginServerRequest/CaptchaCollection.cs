@@ -22,7 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using C2SProtocol.User;
+using C2SProtocol.Data;
 using ExitGames.Concurrency.Fibers;
 
 namespace MasterServer.LoginServerRequest

@@ -20,7 +20,7 @@
 //-----------------------------------------------------------------------------------------------------------
 
 using System;
-using C2SProtocol.User;
+using C2SProtocol.Data;
 using MasterServer.DataCollection;
 using Photon.SocketServer;
 using Protocol;
