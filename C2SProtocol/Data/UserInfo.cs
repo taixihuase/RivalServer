@@ -20,9 +20,8 @@
 //----------------------------------------------------------------------------------------------------------
 
 using ProtoBuf;
-using static System.String;
 
-namespace C2SProtocol.User
+namespace C2SProtocol.Data
 {
     /// <summary>
     /// 类型：类
@@ -32,18 +31,31 @@ namespace C2SProtocol.User
     /// 编写日期：2016/3/17
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(5, typeof(PlayerInfo))]
     public class UserInfo
     {
-        [ProtoMember(1, IsRequired = true)]
-        public uint UniqueId { get; set; }
+        /// <summary>
+        /// 用户编号
+        /// </summary>
+        [ProtoMember(1)]
+        public int UniqueId { get; set; }
 
-        [ProtoMember(2, IsRequired = true)]
+        /// <summary>
+        /// 账号
+        /// </summary>
+        [ProtoMember(2)]
         public string Account { get; set; }
 
-        [ProtoMember(3, IsRequired = true)]
+        /// <summary>
+        /// 昵称
+        /// </summary>
+        [ProtoMember(3)]
         public string Nickname { get; set; }
 
-        [ProtoMember(4, IsRequired = true)]
+        /// <summary>
+        /// 用户状态
+        /// </summary>
+        [ProtoMember(4)]
         public UserStatus Status { get; set; }
 
         /// <summary>
@@ -73,7 +85,7 @@ namespace C2SProtocol.User
         /// <param name="account"></param>
         /// <param name="nickname"></param>
         /// <param name="status"></param>
-        public UserInfo(uint id , string account, string nickname, UserStatus status)
+        public UserInfo(int id , string account, string nickname, UserStatus status)
         {
             UniqueId = id;
             Account = account;
@@ -90,9 +102,9 @@ namespace C2SProtocol.User
         /// </summary>
         public UserInfo()
         {
-            UniqueId = uint.MinValue;
-            Account = Empty;
-            Nickname = Empty;
+            UniqueId = 0;
+            Account = string.Empty;
+            Nickname = string.Empty;
             Status = UserStatus.Offline;
         }
 

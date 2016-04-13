@@ -69,14 +69,14 @@ namespace Protocol
                 string tempip = "0.0.0.0";
                 try
                 {
-                    WebRequest wr = WebRequest.Create("http://www.ip138.com/ips138.asp");
+                    WebRequest wr = WebRequest.Create("http://www.ipip.net/");
                     Stream s = wr.GetResponse().GetResponseStream();
                     if (s != null)
                     {
-                        StreamReader sr = new StreamReader(s, Encoding.Default);
+                        StreamReader sr = new StreamReader(s, Encoding.UTF8);
                         string all = sr.ReadToEnd();
-                        int start = all.IndexOf("您的IP地址是：[", StringComparison.Ordinal) + 9;
-                        int end = all.IndexOf("]", start, StringComparison.Ordinal);
+                        int start = all.IndexOf("您当前的IP：", StringComparison.Ordinal) + 7;
+                        int end = all.IndexOf("<", start, StringComparison.Ordinal);
                         tempip = all.Substring(start, end - start);
                         sr.Close();
                         s.Close();

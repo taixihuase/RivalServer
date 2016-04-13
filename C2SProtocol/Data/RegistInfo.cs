@@ -20,9 +20,8 @@
 //----------------------------------------------------------------------------------------------------------
 
 using ProtoBuf;
-using static System.String;
 
-namespace C2SProtocol.User
+namespace C2SProtocol.Data
 {
     /// <summary>
     /// 类型：类
@@ -34,19 +33,34 @@ namespace C2SProtocol.User
     [ProtoContract]
     public class RegistInfo
     {
-        [ProtoMember(1, IsRequired = true)]
+        /// <summary>
+        /// 注册邮箱
+        /// </summary>
+        [ProtoMember(1)]
         public string Email { get; set; }
 
-        [ProtoMember(2, IsRequired = true)]
+        /// <summary>
+        /// 昵称
+        /// </summary>
+        [ProtoMember(2)]
         public string Nickname { get; set; }
 
-        [ProtoMember(3, IsRequired = true)]
+        /// <summary>
+        /// 密码
+        /// </summary>
+        [ProtoMember(3)]
         public string Password { get; set; }
 
-        [ProtoMember(4, IsRequired = true)]
+        /// <summary>
+        /// 验证码
+        /// </summary>
+        [ProtoMember(4)]
         public string Captcha { get; set; }
 
-        [ProtoMember(5, IsRequired = true)]
+        /// <summary>
+        /// 注册校验状态
+        /// </summary>
+        [ProtoMember(5)]
         public CheckStatus Status { get; set; }
 
         /// <summary>
@@ -96,10 +110,10 @@ namespace C2SProtocol.User
         /// </summary>
         public RegistInfo()
         {
-            Email = Empty;
-            Nickname = Empty;
-            Password = Empty;
-            Captcha = Empty;
+            Email = string.Empty;
+            Nickname = string.Empty;
+            Password = string.Empty;
+            Captcha = string.Empty;
             Status = CheckStatus.Unchecked;
         }
 

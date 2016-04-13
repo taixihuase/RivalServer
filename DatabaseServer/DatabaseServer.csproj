@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5471BE80-5A9B-4A29-ACAC-CD7FF7E3FC1D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DatabaseServer</RootNamespace>
     <AssemblyName>DatabaseServer</AssemblyName>
@@ -32,7 +32,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\Unity 5.3.1\Photon Server\deploy\Servers\DatabaseServer\bin\</OutputPath>
+    <OutputPath>..\..\..\..\Unity 5.3.1\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\Rival\DatabaseServer\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -40,7 +40,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\Unity 5.3.1\Photon Server\deploy\Servers\DatabaseServer\bin\</OutputPath>
+    <OutputPath>..\..\..\..\Unity 5.3.1\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\Rival\DatabaseServer\bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -87,7 +87,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="C2SProtocol, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+    <Reference Include="C2SProtocol, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Unity 5.3.1\Projects\Rival\Assets\Plugins\C2SProtocol.dll</HintPath>
     </Reference>
@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseServerApplication.cs" />
+    <Compile Include="DataBuffer.cs" />
     <Compile Include="Entity\Maps\CardPackMap.cs" />
     <Compile Include="Entity\Maps\CardEffectMap.cs" />
     <Compile Include="Entity\Maps\DeckMap.cs" />
@@ -193,6 +194,10 @@
     <Compile Include="Migrations\201604111545161_2345.Designer.cs">
       <DependentUpon>201604111545161_2345.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604131527278_2327.cs" />
+    <Compile Include="Migrations\201604131527278_2327.Designer.cs">
+      <DependentUpon>201604131527278_2327.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PeerToMasterServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604111545161_2345.resx">
       <DependentUpon>201604111545161_2345.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604131527278_2327.resx">
+      <DependentUpon>201604131527278_2327.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

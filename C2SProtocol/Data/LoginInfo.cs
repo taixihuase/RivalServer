@@ -20,9 +20,8 @@
 //----------------------------------------------------------------------------------------------------------
 
 using ProtoBuf;
-using static System.String;
 
-namespace C2SProtocol.User
+namespace C2SProtocol.Data
 {
     /// <summary>
     /// 类型：类
@@ -34,13 +33,22 @@ namespace C2SProtocol.User
     [ProtoContract]
     public class LoginInfo
     {
-        [ProtoMember(1, IsRequired = true)]
+        /// <summary>
+        /// 登录账号
+        /// </summary>
+        [ProtoMember(1)]
         public string Account { get; set; }
 
-        [ProtoMember(2, IsRequired = true)]
+        /// <summary>
+        /// 密码
+        /// </summary>
+        [ProtoMember(2)]
         public string Password { get; set; }
 
-        [ProtoMember(3, IsRequired = true)]
+        /// <summary>
+        /// 登录校验状态
+        /// </summary>
+        [ProtoMember(3)]
         public CheckStatus Status { get; set; }
 
         /// <summary>
@@ -84,8 +92,8 @@ namespace C2SProtocol.User
         /// </summary>
         public LoginInfo()
         {
-            Account = Empty;
-            Password = Empty;
+            Account = string.Empty;
+            Password = string.Empty;
             Status = CheckStatus.Unchecked;
         }
 
