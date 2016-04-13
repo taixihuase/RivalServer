@@ -21,6 +21,7 @@
 
 using System.ComponentModel;
 using ProtoBuf;
+// ReSharper disable NonReadonlyMemberInGetHashCode
 
 namespace C2SProtocol.Data
 {
@@ -31,13 +32,20 @@ namespace C2SProtocol.Data
     /// 作用：记录卡牌效果信息
     /// 编写日期：2016/4/12
     /// </summary>
+    [ProtoContract]
     public class CardEffectInfo
     {
-        [ProtoMember(1100)]
+        /// <summary>
+        /// 编号
+        /// </summary>
+        [ProtoMember(1)]
         public int CardEffectId { get; set; }
 
-        [ProtoMember(1101)]
-        public OwnerType Owner { get; set; }
+        /// <summary>
+        /// 效果所有者
+        /// </summary>
+        [ProtoMember(2)]
+        public OwnerType? Owner { get; set; }
 
         /// <summary>
         /// 类型：枚举
@@ -64,8 +72,11 @@ namespace C2SProtocol.Data
             MonsterAndSpell
         }
 
-        [ProtoMember(1102)]
-        public ConditionType Condition { get; set; }
+        /// <summary>
+        /// 触发条件
+        /// </summary>
+        [ProtoMember(3)]
+        public ConditionType? Condition { get; set; }
 
         /// <summary>
         /// 类型：枚举
@@ -80,10 +91,16 @@ namespace C2SProtocol.Data
             All,
         }
 
-        [ProtoMember(1103)]
+        /// <summary>
+        /// 效果描述
+        /// </summary>
+        [ProtoMember(4)]
         public string Description { get; set; }
 
-        [ProtoMember(1104)]
+        /// <summary>
+        /// 效果附带数值
+        /// </summary>
+        [ProtoMember(5)]
         public int? Value { get; set; }
 
         /// <summary>
@@ -96,10 +113,68 @@ namespace C2SProtocol.Data
         public CardEffectInfo()
         {
             CardEffectId = 0;
-            Owner = OwnerType.All;
-            Condition = ConditionType.All;
+            Owner = null;
+            Condition = null;
             Description = string.Empty;
             Value = null;
+        }
+
+        /// <summary>
+        /// 类型：方法 
+        /// 名称：SetCardEffectOwner
+        /// 作者：taixihuase
+        /// 作用：设置卡牌效果所有者
+        /// 编写日期：2016/4/13
+        /// </summary>
+        /// <param name="owner"></param>
+        public void SetCardEffectOwner(OwnerType owner = OwnerType.All)
+        {
+            Owner = owner;
+        }
+
+        /// <summary>
+        /// 类型：方法 
+        /// 名称：SetCardEffectCondition
+        /// 作者：taixihuase
+        /// 作用：设置卡牌效果触发条件
+        /// 编写日期：2016/4/13
+        /// </summary>
+        /// <param name="condition"></param>
+        public void SetCardEffectCondition(ConditionType? condition = ConditionType.All)
+        {
+            Condition = condition;
+        }
+
+        /// <summary>
+        /// 类型：方法 
+        /// 名称：SetCardEffect
+        /// 作者：taixihuase
+        /// 作用：设置卡牌效果描述和数值
+        /// 编写日期：2016/4/13
+        /// </summary>
+        /// <param name="desc"></param>
+        /// <param name="val"></param>
+        public void SetCardEffect(string desc, int? val = null)
+        {
+            Description = desc;
+            Value = val;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (this == obj)
+                return true;
+
+            var cardEffectInfo = obj as CardEffectInfo;
+            return cardEffectInfo != null && (CardEffectId == cardEffectInfo.CardEffectId && Value == cardEffectInfo.Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return CardEffectId ^ Description.GetHashCode();
         }
     }
 }

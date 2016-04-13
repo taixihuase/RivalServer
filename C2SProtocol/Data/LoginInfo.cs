@@ -33,12 +33,21 @@ namespace C2SProtocol.Data
     [ProtoContract]
     public class LoginInfo
     {
+        /// <summary>
+        /// 登录账号
+        /// </summary>
         [ProtoMember(1)]
         public string Account { get; set; }
 
+        /// <summary>
+        /// 密码
+        /// </summary>
         [ProtoMember(2)]
         public string Password { get; set; }
 
+        /// <summary>
+        /// 登录校验状态
+        /// </summary>
         [ProtoMember(3)]
         public CheckStatus Status { get; set; }
 

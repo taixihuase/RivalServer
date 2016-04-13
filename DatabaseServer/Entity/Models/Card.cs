@@ -37,7 +37,7 @@ namespace DatabaseServer.Entity.Models
 
         public string Name { get; set; }
 
-        public CardType Type { get; set; }
+        public CardType? Type { get; set; }
 
         /// <summary>
         /// 类型：枚举
@@ -48,13 +48,12 @@ namespace DatabaseServer.Entity.Models
         /// </summary>
         public enum CardType : byte
         {
-            [Description("Basic")] Basic,
             [Description("Lord")] Lord,
             [Description("Monster")] Monster,
             [Description("Spell")] Spell
         }
 
-        public AttributeType MainAttribute { get; set; }
+        public AttributeType? MainAttribute { get; set; }
 
         /// <summary>
         /// 类型：枚举
@@ -77,7 +76,7 @@ namespace DatabaseServer.Entity.Models
             Water
         }
 
-        public RarityType Rarity { get; set; }
+        public RarityType? Rarity { get; set; }
 
         /// <summary>
         /// 类型：枚举

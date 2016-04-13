@@ -31,17 +31,30 @@ namespace C2SProtocol.Data
     /// 编写日期：2016/3/17
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(5, typeof(PlayerInfo))]
     public class UserInfo
     {
+        /// <summary>
+        /// 用户编号
+        /// </summary>
         [ProtoMember(1)]
-        public uint UniqueId { get; set; }
+        public int UniqueId { get; set; }
 
+        /// <summary>
+        /// 账号
+        /// </summary>
         [ProtoMember(2)]
         public string Account { get; set; }
 
+        /// <summary>
+        /// 昵称
+        /// </summary>
         [ProtoMember(3)]
         public string Nickname { get; set; }
 
+        /// <summary>
+        /// 用户状态
+        /// </summary>
         [ProtoMember(4)]
         public UserStatus Status { get; set; }
 
@@ -72,7 +85,7 @@ namespace C2SProtocol.Data
         /// <param name="account"></param>
         /// <param name="nickname"></param>
         /// <param name="status"></param>
-        public UserInfo(uint id , string account, string nickname, UserStatus status)
+        public UserInfo(int id , string account, string nickname, UserStatus status)
         {
             UniqueId = id;
             Account = account;
@@ -89,7 +102,7 @@ namespace C2SProtocol.Data
         /// </summary>
         public UserInfo()
         {
-            UniqueId = uint.MinValue;
+            UniqueId = 0;
             Account = string.Empty;
             Nickname = string.Empty;
             Status = UserStatus.Offline;

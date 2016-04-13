@@ -22,9 +22,6 @@
 using System.Net;
 using ProtoBuf;
 
-// ReSharper disable PossibleNullReferenceException
-// ReSharper disable NonReadonlyMemberInGetHashCode
-
 namespace Protocol
 {
     /// <summary>
@@ -37,9 +34,15 @@ namespace Protocol
     [ProtoContract]
     public class SocketGuid
     {
+        /// <summary>
+        /// IP 地址
+        /// </summary>
         [ProtoMember(1)]
         public int IpAddress { get; protected set; }
 
+        /// <summary>
+        /// 端口号
+        /// </summary>
         [ProtoMember(2)]
         public ushort Port { get; protected set; }
 
@@ -48,11 +51,11 @@ namespace Protocol
             if (obj == null)
                 return false;
 
-            if (obj.GetType() != typeof (SocketGuid))
-                return false;
+            if (this == obj)
+                return true;
 
-            SocketGuid key = obj as SocketGuid;
-            return key.IpAddress == IpAddress && key.Port == Port;
+            var key = obj as SocketGuid;
+            return key != null && (key.IpAddress == IpAddress && key.Port == Port);
         }
 
         public override int GetHashCode()

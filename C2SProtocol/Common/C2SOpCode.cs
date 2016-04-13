@@ -30,9 +30,24 @@ namespace C2SProtocol.Common
     /// </summary>
     public enum C2SOpCode
     {
+        /// <summary>
+        /// 登录操作
+        /// </summary>
         Login,
+
+        /// <summary>
+        /// 注册有效性检测
+        /// </summary>
         RegistCheck,
+
+        /// <summary>
+        /// 注册操作
+        /// </summary>
         Regist,
+
+        /// <summary>
+        /// 申请验证码操作
+        /// </summary>
         ApplyForCaptcha,
     }
 }

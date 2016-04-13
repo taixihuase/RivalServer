@@ -30,6 +30,9 @@ namespace C2SProtocol.Common
     /// </summary>
     public enum C2SEventCode
     {
+        /// <summary>
+        /// 套接字已存在
+        /// </summary>
         SocketExist,
     }
 }

@@ -46,10 +46,16 @@ namespace C2SProtocol.Data
             Name = string.Empty;
         }
 
-        [ProtoMember(100)]
+        /// <summary>
+        /// 编号
+        /// </summary>
+        [ProtoMember(1)]
         public int AvatarId { get; set; }
 
-        [ProtoMember(101)]
+        /// <summary>
+        /// 名称
+        /// </summary>
+        [ProtoMember(2)]
         public string Name { get; set; }
     }
 }

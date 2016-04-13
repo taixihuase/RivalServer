@@ -30,8 +30,19 @@ namespace C2SProtocol.Common
     /// </summary>
     public enum C2SRetCode
     {
+        /// <summary>
+        /// 操作成功
+        /// </summary>
         Success,
+
+        /// <summary>
+        /// 操作失败
+        /// </summary>
         Failure,
+
+        /// <summary>
+        /// 未知错误
+        /// </summary>
         UnknownError
     }
 }

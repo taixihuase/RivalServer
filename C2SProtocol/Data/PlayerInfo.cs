@@ -54,52 +54,94 @@ namespace C2SProtocol.Data
             DefaultDeck = 0;
         }
 
-        [ProtoMember(5)]
+        /// <summary>
+        /// 当前等级
+        /// </summary>
+        [ProtoMember(1)]
         public int Level { get; set; }
 
-        [ProtoMember(6)]
+        /// <summary>
+        /// 当前等级经验值
+        /// </summary>
+        [ProtoMember(2)]
         public int Experience { get; set; }
 
-        [ProtoMember(7)]
+        /// <summary>
+        /// 升级所需经验值
+        /// </summary>
+        [ProtoMember(3)]
         public int UpgradeExp { get; set; }
 
-        [ProtoMember(8)]
+        /// <summary>
+        /// 游戏币数值
+        /// </summary>
+        [ProtoMember(4)]
         public int Currency { get; set; }
 
-        [ProtoMember(9)]
+        /// <summary>
+        /// 胜利总场数
+        /// </summary>
+        [ProtoMember(5)]
         public int Win { get; set; }
 
-        [ProtoMember(10)]
+        /// <summary>
+        /// 游戏总场数
+        /// </summary>
+        [ProtoMember(6)]
         public int Total { get; set; }
 
-        [ProtoMember(11)]
+        /// <summary>
+        /// 默认头像
+        /// </summary>
+        [ProtoMember(7)]
         public int DefaultAvatar { get; set; }
 
-        [ProtoMember(12)]
+        /// <summary>
+        /// 默认头衔
+        /// </summary>
+        [ProtoMember(8)]
         public int DefaultTitle { get; set; }
 
-        [ProtoMember(13)]
+        /// <summary>
+        /// 默认牌组序号
+        /// </summary>
+        [ProtoMember(9)]
         public int DefaultDeck { get; set; }
 
-        [ProtoMember(14)]
+        /// <summary>
+        /// 好友清单
+        /// </summary>
+        [ProtoMember(10)]
         public Dictionary<int, UserInfo> Friend = new Dictionary<int, UserInfo>();
              
+        /// <summary>
+        /// 头像编号清单
+        /// </summary>
+        [ProtoMember(11)]
+        public List<int> Avatar = new List<int>();
+
+        /// <summary>
+        /// 头衔编号清单
+        /// </summary>
+        [ProtoMember(12)]
+        public List<int> Title = new List<int>();
+
+        /// <summary>
+        /// 已有卡牌编号清单
+        /// </summary>
+        [ProtoMember(13)]
+        public List<int> Card = new List<int>();
+
+        /// <summary>
+        /// 牌组清单
+        /// </summary>
+        [ProtoMember(14)]
+        public Dictionary<int, List<int>> Deck = new Dictionary<int, List<int>>();
+
+        /// <summary>
+        /// 扩展包编号及数量清单
+        /// </summary>
         [ProtoMember(15)]
-        public Dictionary<int, AvatarInfo> Avatar = new Dictionary<int, AvatarInfo>(); 
-
-        [ProtoMember(16)]
-        public Dictionary<int, TitleInfo> Title = new Dictionary<int, TitleInfo>(); 
-
-        [ProtoMember(17)]
-        public Dictionary<int, CardInfo> Card = new Dictionary<int, CardInfo>(); 
-
-        [ProtoMember(18)]
-        public Dictionary<int, List<CardInfo>> Deck = new Dictionary<int, List<CardInfo>>();
-
-        [ProtoMember(19)]
-        public Dictionary<int, CardPackInfo> CardPack = new Dictionary<int, CardPackInfo>();
-
-        [ProtoMember(20)]
-        public Dictionary<int, int> CardPackCount = new Dictionary<int, int>(); 
+        public Dictionary<int, int> CardPack = new Dictionary<int, int>(); 
     }
 }

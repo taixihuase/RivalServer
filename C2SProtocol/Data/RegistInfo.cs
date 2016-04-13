@@ -33,18 +33,33 @@ namespace C2SProtocol.Data
     [ProtoContract]
     public class RegistInfo
     {
+        /// <summary>
+        /// 注册邮箱
+        /// </summary>
         [ProtoMember(1)]
         public string Email { get; set; }
 
+        /// <summary>
+        /// 昵称
+        /// </summary>
         [ProtoMember(2)]
         public string Nickname { get; set; }
 
+        /// <summary>
+        /// 密码
+        /// </summary>
         [ProtoMember(3)]
         public string Password { get; set; }
 
+        /// <summary>
+        /// 验证码
+        /// </summary>
         [ProtoMember(4)]
         public string Captcha { get; set; }
 
+        /// <summary>
+        /// 注册校验状态
+        /// </summary>
         [ProtoMember(5)]
         public CheckStatus Status { get; set; }
 

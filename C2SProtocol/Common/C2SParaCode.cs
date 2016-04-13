@@ -31,8 +31,19 @@ namespace C2SProtocol.Common
     /// </summary>
     public enum C2SParaCode
     {
+        /// <summary>
+        /// 登录参数
+        /// </summary>
         Login,
+
+        /// <summary>
+        /// 注册参数
+        /// </summary>
         Regist,
+
+        /// <summary>
+        /// 邮箱参数
+        /// </summary>
         Email,
     }
 }

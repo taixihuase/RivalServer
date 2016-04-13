@@ -32,10 +32,16 @@ namespace C2SProtocol.Data
             Name = string.Empty;
         }
 
-        [ProtoMember(200)]
+        /// <summary>
+        /// 编号
+        /// </summary>
+        [ProtoMember(1)]
         public int TitleId { get; set; }
 
-        [ProtoMember(201)]
+        /// <summary>
+        /// 名称
+        /// </summary>
+        [ProtoMember(2)]
         public string Name { get; set; }
     }
 }

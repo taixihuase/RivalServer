@@ -38,10 +38,10 @@ namespace MasterServer.DataCollection
 
         public ExtendedPoolFiber Fiber { get; set; }
 
-        private Dictionary<uint, UserInfo> Users { get; set; }
+        private Dictionary<int, UserInfo> Users { get; set; }
 
         // ReSharper disable once InconsistentNaming
-        private Dictionary<string, uint> AccountToID { get; set; }
+        private Dictionary<string, int> AccountToID { get; set; }
 
         /// <summary>
         /// 类型：方法
@@ -53,8 +53,8 @@ namespace MasterServer.DataCollection
         private UserCollection()
         {
             Fiber = new ExtendedPoolFiber();
-            Users = new Dictionary<uint, UserInfo>();
-            AccountToID = new Dictionary<string, uint>();
+            Users = new Dictionary<int, UserInfo>();
+            AccountToID = new Dictionary<string, int>();
             Fiber.Start();
         }
 
@@ -104,7 +104,7 @@ namespace MasterServer.DataCollection
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool RemoveUser(uint id)
+        public bool RemoveUser(int id)
         {
             if (!Users.ContainsKey(id))
                 return false;
@@ -143,7 +143,7 @@ namespace MasterServer.DataCollection
         /// <param name="id"></param>
         /// <param name="user"></param>
         /// <returns></returns>
-        public bool TryGetUser(uint id, out UserInfo user)
+        public bool TryGetUser(int id, out UserInfo user)
         {
             if (!Users.ContainsKey(id))
             {

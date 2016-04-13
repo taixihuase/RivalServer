@@ -41,8 +41,7 @@ namespace DatabaseServer
     /// 编写日期：2016/1/25
     /// </summary>
     public class DatabaseServerApplication : ApplicationBase
-    {
-        
+    {        
         private static readonly ILogger Log = LogManager.GetCurrentClassLogger();
 
         public PeerToMasterServer PeerToMaster;
