@@ -47,7 +47,7 @@ namespace DatabaseServer.Entity.Maps
 
             HasKey(t => t.Id);
 
-            Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("CardEffectId");
+            Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None).HasColumnName("CardEffectId");
 
             Property(t => t.Owner).HasColumnName("Owner");
 

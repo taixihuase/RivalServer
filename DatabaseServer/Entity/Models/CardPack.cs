@@ -20,7 +20,7 @@
 //----------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.ComponentModel;
+using C2SProtocol.Data;
 
 namespace DatabaseServer.Entity.Models
 {
@@ -35,25 +35,36 @@ namespace DatabaseServer.Entity.Models
     {
         public int Id { get; set; }
 
-        public PackType Type { get; set; }
-
-        /// <summary>
-        /// 类型：枚举
-        /// 名称：PackType
-        /// 作者：taixihuase
-        /// 作用：扩展包类型枚举
-        /// 编写日期：2016/4/11
-        /// </summary>
-        public enum PackType : byte
-        {
-            [Description("Classic")]
-            Classic,
-        }        
+        public CardPackInfo.PackType Type { get; set; }     
 
         public string Name { get; set; }
 
         public int Price { get; set; }
 
         public virtual ICollection<Card> Cards { get; set; } = new List<Card>();
+
+        /// <summary>
+        /// 类型：方法
+        /// 名称：ToCardPackInfo
+        /// 作者：taixihuase
+        /// 作用：转换为 CardPackInfo 对象
+        /// 编写日期：2016/4/14
+        /// </summary>
+        /// <returns></returns>
+        public CardPackInfo ToCardPackInfo()
+        {
+            var pack = new CardPackInfo
+            {
+                CardPackId = Id,
+                Name = Name,
+                Type = Type,
+                Price = Price
+            };
+            foreach (var card in Cards)
+            {
+                pack.AddCard(card.Id);
+            }
+            return pack;
+        }
     }
 }

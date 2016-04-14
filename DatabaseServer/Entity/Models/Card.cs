@@ -20,7 +20,7 @@
 //----------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.ComponentModel;
+using C2SProtocol.Data;
 
 namespace DatabaseServer.Entity.Models
 {
@@ -37,87 +37,78 @@ namespace DatabaseServer.Entity.Models
 
         public string Name { get; set; }
 
-        public CardType? Type { get; set; }
+        public CardInfo.CardType? Type { get; set; }
 
-        /// <summary>
-        /// 类型：枚举
-        /// 名称：CardType
-        /// 作者：taixihuase
-        /// 作用：卡牌类型枚举
-        /// 编写日期：2016/4/5
-        /// </summary>
-        public enum CardType : byte
-        {
-            [Description("Lord")] Lord,
-            [Description("Monster")] Monster,
-            [Description("Spell")] Spell
-        }
+        public CardInfo.AttributeType? MainAttribute { get; set; }
 
-        public AttributeType? MainAttribute { get; set; }
-
-        /// <summary>
-        /// 类型：枚举
-        /// 名称：AttributeType
-        /// 作者：taixihuase
-        /// 作用：五行属性类型枚举
-        /// 编写日期：2016/4/5
-        /// </summary>
-        public enum AttributeType : byte
-        {
-            [Description("木")]
-            Wood,
-            [Description("火")]
-            Fire,
-            [Description("土")]
-            Earth,
-            [Description("金")]
-            Metal,
-            [Description("水")]
-            Water
-        }
-
-        public RarityType? Rarity { get; set; }
-
-        /// <summary>
-        /// 类型：枚举
-        /// 名称：RarityType
-        /// 作者：taixihuase
-        /// 作用：稀有度类型枚举
-        /// 编写日期：2016/4/5
-        /// </summary>
-        public enum RarityType : byte
-        {
-            [Description("普通")]
-            Ordinary,
-            [Description("稀有")]
-            Rare,
-            [Description("史诗")]
-            Epic,
-            [Description("传说")]
-            Legendary
-        }
+        public CardInfo.RarityType? Rarity { get; set; }
 
         public virtual ICollection<CardEffect> CardEffects { get; set; } = new List<CardEffect>();
-
-        /// <summary>
-        /// 类型：枚举
-        /// 名称：MagnitudeType
-        /// 作者：taixihuase
-        /// 作用：星等类型枚举
-        /// 编写日期：2016/4/6
-        /// </summary>
-        public enum MagnitudeType : byte
-        {
-            [Description("1")] One,
-            [Description("2")] Two,
-            [Description("3")] Three,
-            [Description("4")] Four,
-            [Description("5")] Five,
-            [Description("6")] Six
-        }
 
         public virtual CardPack CardPack { get; set; }
 
         public int? CardPackId { get; set; }
+
+        /// <summary>
+        /// 类型：方法
+        /// 名称：ToCardInfo
+        /// 作者：taixihuase
+        /// 作用：转换为 CardInfo 对象
+        /// 编写日期：2016/4/14
+        /// </summary>
+        /// <returns></returns>
+        public CardInfo ToCardInfo()
+        {
+            CardInfo card = new CardInfo
+            {
+                CardId = Id,
+                Name = Name,
+                Type = Type,
+                MainAttribute = MainAttribute,
+                Rarity = Rarity
+            };
+            foreach (var effect in CardEffects)
+            {
+                card.CardEffect.Add(effect.Id);
+            }
+            try
+            {
+                var l = this as LordCard;
+                if (l != null)
+                {
+                    card.AttackAttribute = l.CombatAttribute.AttackAttribute;
+                    card.Attack = l.CombatAttribute.Attack;
+                    card.ShieldAttribute = l.CombatAttribute.ShieldAttribute;
+                    card.Shield = l.CombatAttribute.Shield;
+                }
+                else
+                {
+                    var m = this as MonsterCard;
+                    if (m != null)
+                    {
+                        card.AttackAttribute = m.CombatAttribute.AttackAttribute;
+                        card.Attack = m.CombatAttribute.Attack;
+                        card.ShieldAttribute = m.CombatAttribute.ShieldAttribute;
+                        card.Shield = m.CombatAttribute.Shield;
+                        card.Range = m.Range;
+                        card.Flexibility = m.Flexibility;
+                        card.Magnitude = m.Magnitude;
+                    }
+                    else
+                    {
+                        var s = this as SpellCard;
+                        if (s != null)
+                        {
+                            card.Magnitude = s.Magnitude;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                // ignored
+            }
+            return card;
+        }
     }
 }

@@ -19,8 +19,13 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Threading;
+using DatabaseServer.Entity.Models;
 using DatabaseServer.Migrations;
+using S2SProtocol.Common;
 
 namespace DatabaseServer.Entity.Context
 {
@@ -46,6 +51,36 @@ namespace DatabaseServer.Entity.Context
             using (RivalContext db = new RivalContext())
             {
                 db.Refresh();
+
+                Console.WriteLine("Refresh OK");
+
+                var time = ServerTime.Instance.Time;
+                Thread.Sleep(1000);
+
+                List<Level> items = new List<Level>();
+
+                int i = 1;
+                int up = 8;
+                int add = 2;
+
+                for (int j = i; j < 50; j++)
+                {
+                    Level l = new Level
+                    {
+                        Id = j,
+                        UpgradeExp = up + add + (j - 1)/5
+                    };
+                    up = l.UpgradeExp;
+                    items.Add(l);
+                }
+
+                foreach (var item in items)
+                {
+                    db.Find<Level>().Add(item);
+                }
+
+                db.Commit();
+                Console.WriteLine("Commit OK");
             }
         }
 

@@ -60,7 +60,7 @@ namespace LogicServer
             Server = server;
             Guid = new SocketGuid(initRequest.PhotonPeer.GetRemoteIP(), initRequest.PhotonPeer.GetRemotePort());
             Initialize();
-            Log.Debug($"[{DateTime.Now}]一个 Proxy Server 成功连接本服务器 [Socket]{Guid.GetSocketToString()}");
+            Log.Debug($"[{ServerTime.Instance.Time}]一个 Proxy Server 成功连接本服务器 [Socket]{Guid.GetSocketToString()}");
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace LogicServer
         protected override void OnDisconnect(DisconnectReason reasonCode, string reasonDetail)
         {
             Release();
-            Log.Debug($"[{DateTime.Now}]一个 Proxy Server 断开连接 [Socket]{Guid.GetSocketToString()}");
+            Log.Debug($"[{ServerTime.Instance.Time}]一个 Proxy Server 断开连接 [Socket]{Guid.GetSocketToString()}");
         }
 
         #endregion

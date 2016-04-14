@@ -21,6 +21,7 @@
 
 using System;
 using System.IO;
+using System.Threading;
 using ExitGames.Concurrency.Fibers;
 using ExitGames.Logging;
 using ExitGames.Logging.Log4Net;
@@ -29,6 +30,7 @@ using log4net.Config;
 using Photon.SocketServer;
 using S2SProtocol.Common;
 using LogManager = ExitGames.Logging.LogManager;
+// ReSharper disable UnusedVariable
 
 namespace LobbyServer
 {
@@ -84,7 +86,7 @@ namespace LobbyServer
         {
             CreateLogs();
             Initialize();
-            Log.Debug($"[{DateTime.Now}]{Info.ServerType} 正在运行 [Server Name]{Info.ServerName}");
+            Log.Debug($"[{ServerTime.Instance.Time}]{Info.ServerType} 正在运行 [Server Name]{Info.ServerName}");
             Fiber.Schedule(PeerToMaster.ConnectToMaster, 0);
         }
 
@@ -98,7 +100,7 @@ namespace LobbyServer
         protected override void TearDown()
         {
             Release();
-            Log.Debug($"[{DateTime.Now}]{Info.ServerType} 正在停止 [Server Name]{Info.ServerName}");
+            Log.Debug($"[{ServerTime.Instance.Time}]{Info.ServerType} 正在停止 [Server Name]{Info.ServerName}");
         } 
 
         #endregion
@@ -134,6 +136,8 @@ namespace LobbyServer
         /// </summary>
         private void Initialize()
         {
+            var time = ServerTime.Instance.Time;
+            Thread.Sleep(1000);
             PeerToMaster = new PeerToMasterServer(this);
             Info = new ServerInfo
             {

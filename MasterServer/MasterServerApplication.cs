@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using ExitGames.Concurrency.Fibers;
 using ExitGames.Logging;
 using ExitGames.Logging.Log4Net;
@@ -31,6 +32,7 @@ using Photon.SocketServer;
 using Protocol;
 using S2SProtocol.Common;
 using LogManager = ExitGames.Logging.LogManager;
+// ReSharper disable UnusedVariable
 
 namespace MasterServer
 {
@@ -82,7 +84,7 @@ namespace MasterServer
         {
             CreateLogs();
             Initialize();
-            Log.Debug($"[{DateTime.Now}]{Info.ServerType} 正在运行 [Server Name]{Info.ServerName}");
+            Log.Debug($"[{ServerTime.Instance.Time}]{Info.ServerType} 正在运行 [Server Name]{Info.ServerName}");
             Fiber.ScheduleOnInterval(SendDefaultLogicToProxy, 30000, 60000);
         }
 
@@ -96,7 +98,7 @@ namespace MasterServer
         protected override void TearDown()
         {
             Release();
-            Log.Debug($"[{DateTime.Now}]{Info.ServerType} 正在停止 [Server Name]{Info.ServerName}");
+            Log.Debug($"[{ServerTime.Instance.Time}]{Info.ServerType} 正在停止 [Server Name]{Info.ServerName}");
         }
 
         #endregion
@@ -112,6 +114,8 @@ namespace MasterServer
         /// </summary>
         private void Initialize()
         {
+            var time = ServerTime.Instance.Time;
+            Thread.Sleep(1000);
             Info = new ServerInfo
             {
                 ServerType = (ServerType) Enum.Parse(typeof (ServerType), ServerSettings.Default.ServerType),
@@ -173,7 +177,7 @@ namespace MasterServer
                     Log.Debug("\n");
                     Log.Debug("-------------------------------------------------------------------------------");
                     Log.Debug(
-                        $"[{DateTime.Now}]{proxys[i].Type} 更新默认逻辑服务器列表 [Socket]{proxys[i].Guid.GetSocketToString()} [Server Name]{proxys[i].Name} [Cpu Load]{proxys[i].CpuLoad}");
+                        $"[{ServerTime.Instance.Time}]{proxys[i].Type} 更新默认逻辑服务器列表 [Socket]{proxys[i].Guid.GetSocketToString()} [Server Name]{proxys[i].Name} [Cpu Load]{proxys[i].CpuLoad}");
                     foreach (var socketGuid in logics[i])
                         Log.Debug($"[Socket]{socketGuid.GetSocketToString()}");
                     Log.Debug("-------------------------------------------------------------------------------\n");

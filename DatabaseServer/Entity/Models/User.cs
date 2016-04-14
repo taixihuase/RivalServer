@@ -21,6 +21,7 @@
 
 using System;
 using System.Collections.Generic;
+using C2SProtocol.Data;
 
 namespace DatabaseServer.Entity.Models
 {
@@ -44,5 +45,18 @@ namespace DatabaseServer.Entity.Models
         public DateTime RegistTime { get; set; }
 
         public virtual ICollection<User> Friends { get; set; } = new List<User>();
+
+        /// <summary>
+        /// 类型：方法
+        /// 名称：ToUserInfo
+        /// 作者：taixihuase
+        /// 作用：转换为 UserInfo 对象
+        /// 编写日期：2016/4/14
+        /// </summary>
+        /// <returns></returns>
+        public UserInfo ToUserInfo()
+        {
+            return new UserInfo(Id, Account, Nickname, UserInfo.UserStatus.Default);
+        }
     }
 }

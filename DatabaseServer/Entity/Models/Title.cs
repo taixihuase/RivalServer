@@ -19,7 +19,7 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using C2SProtocol.Data;
 
 namespace DatabaseServer.Entity.Models
 {
@@ -35,5 +35,18 @@ namespace DatabaseServer.Entity.Models
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        /// <summary>
+        /// 类型：方法
+        /// 名称：ToTitleInfo
+        /// 作者：taixihuase
+        /// 作用：转换为 TitleInfo 对象
+        /// 编写日期：2016/4/14
+        /// </summary>
+        /// <returns></returns>
+        public TitleInfo ToTitleInfo()
+        {
+            return new TitleInfo { TitleId = Id, Name = Name };
+        }
     }
 }

@@ -49,6 +49,10 @@ namespace DatabaseServer.Entity.Context
 
         public DbSet<CardEffect> CardEffects { get; set; }
 
+        public DbSet<Deck> Decks { get; set; } 
+
+        public DbSet<CardPack> CardPacks { get; set; } 
+
         /// <summary>
         /// 类型：方法
         /// 名称：RivalContext
@@ -92,7 +96,8 @@ namespace DatabaseServer.Entity.Context
                 .Add(new CombatAttributeMap())
                 .Add(new CardEffectMap())
                 .Add(new DeckMap())
-                .Add(new CardPackMap());
+                .Add(new CardPackMap())
+                .Add(new PlayerCardPackMap());
             
             base.OnModelCreating(modelBuilder);
         }

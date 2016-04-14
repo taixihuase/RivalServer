@@ -20,6 +20,7 @@
 //----------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using C2SProtocol.Data;
 
 namespace DatabaseServer.Entity.Models
 {
@@ -59,5 +60,62 @@ namespace DatabaseServer.Entity.Models
         public virtual ICollection<Card> Cards { get; set; } = new List<Card>();
 
         public virtual ICollection<Deck> Decks { get; set; } = new List<Deck>();
+
+        public virtual ICollection<PlayerCardPack> PlayerCardPacks { get; set; } = new List<PlayerCardPack>();
+
+        /// <summary>
+        /// 类型：方法
+        /// 名称：ToPlayerInfo
+        /// 作者：taixihuase
+        /// 作用：转换为 PlayerInfo 对象
+        /// 编写日期：2016/4/14
+        /// </summary>
+        /// <returns></returns>
+        public PlayerInfo ToPlayerInfo()
+        {
+            PlayerInfo player = new PlayerInfo
+            {
+                UniqueId = Id,
+                Account = Account,
+                Nickname = Nickname,
+                Status = UserInfo.UserStatus.Default,
+                Level = LevelId,
+                Experience = Experience,
+                UpgradeExp = Level.UpgradeExp,
+                WinExp = Level.WinExp,
+                LoseExp = Level.LoseExp,
+                DefaultAvatar = DefaultAvatarId,
+                DefaultTitle = DefaultTitleId,
+                Currency = VirtualCurrency,
+                Win = Win,
+                Total = Total
+            };
+            foreach (var avatar in Avatars)
+            {
+                player.Avatar.Add(avatar.Id);
+            }
+            foreach (var title in Titles)
+            {
+                player.Title.Add(title.Id);
+            }
+            foreach (var card in Cards)
+            {
+                player.Card.Add(card.Id);
+            }
+            foreach (var pack in PlayerCardPacks)
+            {
+                player.CardPack.Add(pack.CardPackId, pack.Count);
+            }
+            foreach (var deck in Decks)
+            {
+                player.Deck.Add(deck.Index, new List<int>());
+                if (deck.LordCardId != null) player.Deck[deck.Index].Add(deck.LordCardId.Value);
+                foreach (var card in deck.SummonCards)
+                {
+                    player.Deck[deck.Index].Add(card.Id);
+                }
+            }
+            return player;
+        }
     }
 }

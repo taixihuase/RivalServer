@@ -47,9 +47,13 @@ namespace DatabaseServer.Entity.Maps
 
             HasKey(t => t.Id);
 
-            Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("Level");
+            Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None).HasColumnName("Level");
 
             Property(t => t.UpgradeExp).HasColumnName("UpgradeExperience");
+
+            Property(t => t.WinExp).HasColumnName("WinExperience");
+
+            Property(t => t.LoseExp).HasColumnName("LoseExperience");
         }
     }
 }

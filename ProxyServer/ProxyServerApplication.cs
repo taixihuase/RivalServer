@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using ExitGames.Concurrency.Fibers;
 using ExitGames.Logging;
 using ExitGames.Logging.Log4Net;
@@ -31,6 +32,7 @@ using Photon.SocketServer;
 using Protocol;
 using S2SProtocol.Common;
 using LogManager = ExitGames.Logging.LogManager;
+// ReSharper disable UnusedVariable
 
 namespace ProxyServer
 {
@@ -94,7 +96,7 @@ namespace ProxyServer
         {
             CreateLogs();
             Initialize();
-            Log.Debug($"[{DateTime.Now}]{Info.ServerType} 正在运行 [Server Name]{Info.ServerName}");
+            Log.Debug($"[{ServerTime.Instance.Time}]{Info.ServerType} 正在运行 [Server Name]{Info.ServerName}");
             Fiber.Enqueue(ConnectToServer);
         }
 
@@ -108,7 +110,7 @@ namespace ProxyServer
         protected override void TearDown()
         {
             Release();
-            Log.Debug($"[{DateTime.Now}]{Info.ServerType} 正在停止 [Server Name]{Info.ServerName}");
+            Log.Debug($"[{ServerTime.Instance.Time}]{Info.ServerType} 正在停止 [Server Name]{Info.ServerName}");
         }
 
         #endregion
@@ -144,6 +146,8 @@ namespace ProxyServer
         /// </summary>
         private void Initialize()
         {
+            var time = ServerTime.Instance.Time;
+            Thread.Sleep(1000);
             ConnectingLogicServer = new List<SocketGuid>();
             Info = new ServerInfo
             {

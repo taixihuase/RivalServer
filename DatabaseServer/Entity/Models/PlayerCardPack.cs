@@ -2,13 +2,13 @@
 // Copyright (C) 2016-2017 Rival
 // 版权所有
 //
-// 文件名：CombatAttribute.cs
+// 文件名：PlayerCardPack.cs
 //
 // 文件功能描述：
 //
-// CombatAttribute 复杂类型
+// PlayerCardPack 实体
 //
-// 创建标识：taixihuase 20160404
+// 创建标识：taixihuase 20160414
 //
 // 修改标识：
 // 修改描述：
@@ -19,25 +19,25 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
-using C2SProtocol.Data;
-
 namespace DatabaseServer.Entity.Models
 {
     /// <summary>
     /// 类型：类
-    /// 名称：CombatAttribute
+    /// 名称：PlayerCardPack
     /// 作者：taixihuase
-    /// 作用：CombatAttribute 复杂类型
-    /// 编写日期：2016/4/4
+    /// 作用：PlayerCardPack 实体
+    /// 编写日期：2016/4/14
     /// </summary>
-    public class CombatAttribute
+    public class PlayerCardPack
     {
-        public CardInfo.AttributeType AttackAttribute { get; set; }
+        public int Id { get; set; }
 
-        public int Attack { get; set; }
+        public virtual Player Player { get; set; }
 
-        public CardInfo.AttributeType ShieldAttribute { get; set; }
+        public int CardPackId { get; set; }
 
-        public int Shield { get; set; }
+        public virtual CardPack CardPack { get; set; }
+
+        public int Count { get; set; }
     }
 }

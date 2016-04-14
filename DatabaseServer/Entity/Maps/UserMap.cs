@@ -19,7 +19,6 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using DatabaseServer.Entity.Models;
@@ -56,7 +55,7 @@ namespace DatabaseServer.Entity.Maps
 
                 Property(t => t.Password).IsRequired().HasMaxLength(30).HasColumnName("Password");
 
-                Property(t => t.RegistTime).IsRequired().HasColumnName("RegistTime");
+                Property(t => t.RegistTime).IsOptional().HasColumnName("RegistTime");
 
                 HasMany(t => t.Friends).WithMany().Map(f =>
                 {

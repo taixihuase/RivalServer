@@ -74,9 +74,9 @@ namespace MasterServer
             Guid = new SocketGuid(initRequest.PhotonPeer.GetRemoteIP(), initRequest.PhotonPeer.GetRemotePort());
             Initialize();
             Log.Debug(
-                $"[{DateTime.Now}]一个子服务器成功连接本服务器 [Socket]{Guid.GetSocketToString()}");
+                $"[{ServerTime.Instance.Time}]一个子服务器成功连接本服务器 [Socket]{Guid.GetSocketToString()}");
             Log.Debug(
-                $"[{DateTime.Now}]{initRequest.PhotonPeer.GetLocalIP()}:{initRequest.PhotonPeer.GetLocalPort()}--{initRequest.PhotonPeer.GetRemoteIP()}:{initRequest.PhotonPeer.GetRemotePort()}");
+                $"[{ServerTime.Instance.Time}]{initRequest.PhotonPeer.GetLocalIP()}:{initRequest.PhotonPeer.GetLocalPort()}--{initRequest.PhotonPeer.GetRemoteIP()}:{initRequest.PhotonPeer.GetRemotePort()}");
         }
 
         /// <summary>
@@ -259,12 +259,12 @@ namespace MasterServer
             if (Type == ServerType.UndefinedServer)
             {
                 Log.Debug(
-                    $"[{DateTime.Now}]一个 '{Type}' 断开连接 [Socket]{Guid.GetSocketToString()}");
+                    $"[{ServerTime.Instance.Time}]一个 '{Type}' 断开连接 [Socket]{Guid.GetSocketToString()}");
             }
             else
             {
                 Log.Debug(
-                    $"[{DateTime.Now}]一个 '{Type}' 断开连接 [Socket]{Guid.GetSocketToString()} [Server Name]{Name}");
+                    $"[{ServerTime.Instance.Time}]一个 '{Type}' 断开连接 [Socket]{Guid.GetSocketToString()} [Server Name]{Name}");
             }
         }
 
@@ -358,7 +358,7 @@ namespace MasterServer
             if (regist)
             {
                 Log.Debug(
-                    $"[{DateTime.Now}]一个 '{Type}' 成功注册 [Socket]{Guid.GetSocketToString()} [Server Name]{Name} [Listening Port]{ListeningPort}");
+                    $"[{ServerTime.Instance.Time}]一个 '{Type}' 成功注册 [Socket]{Guid.GetSocketToString()} [Server Name]{Name} [Listening Port]{ListeningPort}");
                 SendOperationResponseToSub(S2SOpCode.RegistSubServer, S2SRetCode.Success, "成功注册服务器");
 
                 List<PeerToSubServer> proxys;
@@ -438,7 +438,7 @@ namespace MasterServer
             else
             {
                 Log.Debug(
-                    $"[{DateTime.Now}]一个 '{Type}' 无法注册 [Socket]{Guid.GetSocketToString()} [Server Name]{Name} [Reason]该服务器已注册过");
+                    $"[{ServerTime.Instance.Time}]一个 '{Type}' 无法注册 [Socket]{Guid.GetSocketToString()} [Server Name]{Name} [Reason]该服务器已注册过");
                 SendOperationResponseToSub(S2SOpCode.RegistSubServer, S2SRetCode.Failure, "该服务器已注册");
             }
         }
@@ -460,7 +460,7 @@ namespace MasterServer
             LoadLevel = data.ServerLoadLevel;
 
             Log.Debug(
-                $"[{DateTime.Now}][Server Name]{Name} 汇报负载 [CPU]{CpuLoad} [Load Level]{LoadLevel} [Server Type]{Type} [Socket]{Guid.GetSocketToString()}");
+                $"[{ServerTime.Instance.Time}][Server Name]{Name} 汇报负载 [CPU]{CpuLoad} [Load Level]{LoadLevel} [Server Type]{Type} [Socket]{Guid.GetSocketToString()}");
 
             SendOperationResponseToSub(S2SOpCode.ReportServerLoad, S2SRetCode.Success, null);
         }

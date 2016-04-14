@@ -75,7 +75,7 @@ namespace LoginServer
         protected override void OnConnectionEstablished(object responseObject)
         {
             Log.Debug(
-                $"[{DateTime.Now}]{Server.Info.ServerType} 成功连接 Master Server [Socket]{S2SProtocol.Common.ServerSettings.Default.IpOfMasterServer}:{S2SProtocol.Common.ServerSettings.Default.PortOfMasterServer}");
+                $"[{ServerTime.Instance.Time}]{Server.Info.ServerType} 成功连接 Master Server [Socket]{S2SProtocol.Common.ServerSettings.Default.IpOfMasterServer}:{S2SProtocol.Common.ServerSettings.Default.PortOfMasterServer}");
             Fiber.Enqueue(GetServerLoad);
             Fiber.Enqueue(RegistToMaster);
         }
@@ -92,7 +92,7 @@ namespace LoginServer
         protected override void OnConnectionFailed(int errorCode, string errorMessage)
         {
             Log.Debug(
-                $"[{DateTime.Now}]{Server.Info.ServerType} 无法连接 {S2SProtocol.Common.ServerSettings.Default.NameOfMasterServer} [Socket]{S2SProtocol.Common.ServerSettings.Default.IpOfMasterServer}:{S2SProtocol.Common.ServerSettings.Default.PortOfMasterServer}");
+                $"[{ServerTime.Instance.Time}]{Server.Info.ServerType} 无法连接 {S2SProtocol.Common.ServerSettings.Default.NameOfMasterServer} [Socket]{S2SProtocol.Common.ServerSettings.Default.IpOfMasterServer}:{S2SProtocol.Common.ServerSettings.Default.PortOfMasterServer}");
             Fiber.Enqueue(() => ReconnectToMaster(S2SProtocol.Common.ServerSettings.Default.ReconnectToMasterInterval));
         }
 
@@ -123,7 +123,7 @@ namespace LoginServer
             Release();
             Fiber.Enqueue(() => ReconnectToMaster(S2SProtocol.Common.ServerSettings.Default.ReconnectToMasterInterval));
             Log.Debug(
-                $"[{DateTime.Now}]{Server.Info.ServerType} 与 Master Server 连接中断 [Socket]{S2SProtocol.Common.ServerSettings.Default.IpOfMasterServer}:{S2SProtocol.Common.ServerSettings.Default.PortOfMasterServer}");
+                $"[{ServerTime.Instance.Time}]{Server.Info.ServerType} 与 Master Server 连接中断 [Socket]{S2SProtocol.Common.ServerSettings.Default.IpOfMasterServer}:{S2SProtocol.Common.ServerSettings.Default.PortOfMasterServer}");
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace LoginServer
             serverInfo.ListeningPort = ServerSettings.Default.PortForClientPeer;
             serverInfo.Socket = new SocketGuid(IpTool.GetPublicIpAddress(), (ushort)LocalPort);
 
-            Log.Debug($"[{DateTime.Now}]成功获取本服务器信息 [Socket]{Server.Info.GetServerAddress()} [Listening Port]{Server.Info.ListeningPort}");
+            Log.Debug($"[{ServerTime.Instance.Time}]成功获取本服务器信息 [Socket]{Server.Info.GetServerAddress()} [Listening Port]{Server.Info.ListeningPort}");
 
             SendOperationRequestToMaster(S2SOpCode.RegistSubServer, S2SParaCode.SubServerInfo,
                 serverInfo);

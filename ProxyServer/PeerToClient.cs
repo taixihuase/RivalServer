@@ -59,7 +59,7 @@ namespace ProxyServer
             ProxyServer = server;
             Guid = new SocketGuid(initRequest.PhotonPeer.GetRemoteIP(), initRequest.PhotonPeer.GetRemotePort());
             Initialize();
-            Log.Debug($"[{DateTime.Now}]一个客户端成功连接本服务器 [Socket]{Guid.GetSocketToString()}");
+            Log.Debug($"[{ServerTime.Instance.Time}]一个客户端成功连接本服务器 [Socket]{Guid.GetSocketToString()}");
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace ProxyServer
         protected override void OnDisconnect(DisconnectReason reasonCode, string reasonDetail)
         {
             Release();
-            Log.Debug($"[{DateTime.Now}]一个客户端断开连接 [Socket]{Guid.GetSocketToString()}");
+            Log.Debug($"[{ServerTime.Instance.Time}]一个客户端断开连接 [Socket]{Guid.GetSocketToString()}");
         }
 
         #endregion

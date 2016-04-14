@@ -19,7 +19,6 @@
 //
 //-----------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Net;
 using ExitGames.Concurrency.Fibers;
@@ -106,7 +105,7 @@ namespace ProxyServer
             LogicServerCollection.Instance.AddLogicServer(RemoteSocket, this);
             Server.ConnectingLogicServer.RemoveAll(i => Equals(i, RemoteSocket));
             Log.Debug(
-                $"[{DateTime.Now}]{Server.Info.ServerType} 成功连接 Logic Server [Socket]{RemoteSocket.GetSocketToString()} [Server Name]{Name}");
+                $"[{ServerTime.Instance.Time}]{Server.Info.ServerType} 成功连接 Logic Server [Socket]{RemoteSocket.GetSocketToString()} [Server Name]{Name}");
         }
 
         /// <summary>
@@ -121,7 +120,7 @@ namespace ProxyServer
         protected override void OnConnectionFailed(int errorCode, string errorMessage)
         {
             Log.Debug(
-                $"[{DateTime.Now}]{Server.Info.ServerType} 无法连接 {Name} [Socket]{RemoteSocket.GetSocketToString()}");
+                $"[{ServerTime.Instance.Time}]{Server.Info.ServerType} 无法连接 {Name} [Socket]{RemoteSocket.GetSocketToString()}");
             Server.ReconnectToServer(ReconnectInfo);
         }
 
@@ -150,7 +149,7 @@ namespace ProxyServer
         protected override void OnDisconnect(DisconnectReason reasonCode, string reasonDetail)
         {
             Release();
-            Log.Debug($"[{DateTime.Now}]{Server.Info.ServerType} 与 Logic Server 连接中断 [Socket]{RemoteSocket.GetSocketToString()}");
+            Log.Debug($"[{ServerTime.Instance.Time}]{Server.Info.ServerType} 与 Logic Server 连接中断 [Socket]{RemoteSocket.GetSocketToString()}");
         }
 
         /// <summary>
