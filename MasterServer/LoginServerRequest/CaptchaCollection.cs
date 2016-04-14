@@ -21,9 +21,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using C2SProtocol.Data;
 using ExitGames.Concurrency.Fibers;
+using S2SProtocol.Common;
 
 namespace MasterServer.LoginServerRequest
 {
@@ -72,9 +72,9 @@ namespace MasterServer.LoginServerRequest
             string validateNumberStr = "";
 
             //生成起始序列值
-            int seekSeek = unchecked((int)DateTime.Now.Ticks);
+            int seekSeek = unchecked((int)ServerTime.Instance.Time.Ticks);
             Random seekRand = new Random(seekSeek);
-            int beginSeek = (int)seekRand.Next(0, Int32.MaxValue - length * 10000);
+            int beginSeek = seekRand.Next(0, int.MaxValue - length * 10000);
             int[] seeks = new int[length];
             for (int i = 0; i < length; i++)
             {
@@ -87,7 +87,7 @@ namespace MasterServer.LoginServerRequest
             {
                 Random rand = new Random(seeks[i]);
                 int pownum = 1 * (int)Math.Pow(10, length);
-                randMembers[i] = rand.Next(pownum, Int32.MaxValue);
+                randMembers[i] = rand.Next(pownum, int.MaxValue);
             }
 
             //抽取随机数字

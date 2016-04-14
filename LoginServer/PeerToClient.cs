@@ -249,7 +249,7 @@ namespace LoginServer
                 Fiber.Schedule(() => SendEventToClient(C2SEventCode.SocketExist), 1000);
                 return;
             }
-            Log.Debug($"[{DateTime.Now}]一个客户端成功连接本服务器 [Socket]{Guid.GetSocketToString()}");
+            Log.Debug($"[{ServerTime.Instance.Time}]一个客户端成功连接本服务器 [Socket]{Guid.GetSocketToString()}");
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace LoginServer
             {
                 ClientPeerCollection.Instance.RemovePeer(guid);
             }
-            Log.Debug($"[{DateTime.Now}]一个客户端断开连接 [Socket]{Guid.GetSocketToString()}");
+            Log.Debug($"[{ServerTime.Instance.Time}]一个客户端断开连接 [Socket]{Guid.GetSocketToString()}");
         }    
 
         #endregion

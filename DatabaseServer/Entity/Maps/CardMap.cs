@@ -47,7 +47,7 @@ namespace DatabaseServer.Entity.Maps
 
             Map<Card>(m =>
             {             
-                Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("CardId");
+                Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None).HasColumnName("CardId");
                 Property(t => t.Name).IsRequired().HasMaxLength(10).HasColumnName("Name");
                 Property(t => t.Type).HasColumnName("Type");
                 Property(t => t.MainAttribute).HasColumnName("MainAttribute");

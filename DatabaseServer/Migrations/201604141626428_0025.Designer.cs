@@ -7,13 +7,13 @@ namespace DatabaseServer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class _2339 : IMigrationMetadata
+    public sealed partial class _0025 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_2339));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_0025));
         
         string IMigrationMetadata.Id
         {
-            get { return "201604111539146_2339"; }
+            get { return "201604141626428_0025"; }
         }
         
         string IMigrationMetadata.Source

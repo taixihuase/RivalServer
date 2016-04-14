@@ -20,6 +20,7 @@
 //----------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using C2SProtocol.Data;
 
 namespace DatabaseServer.Entity.Models
 {
@@ -35,5 +36,18 @@ namespace DatabaseServer.Entity.Models
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        /// <summary>
+        /// 类型：方法
+        /// 名称：ToAvatarInfo
+        /// 作者：taixihuase
+        /// 作用：转换为 AvatarInfo 对象
+        /// 编写日期：2016/4/14
+        /// </summary>
+        /// <returns></returns>
+        public AvatarInfo ToAvatarInfo()
+        {
+            return new AvatarInfo {AvatarId = Id, Name = Name};
+        }
     }
 }

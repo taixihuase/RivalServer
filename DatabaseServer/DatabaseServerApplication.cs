@@ -21,6 +21,7 @@
 
 using System;
 using System.IO;
+using System.Threading;
 using DatabaseServer.Entity.Context;
 using ExitGames.Concurrency.Fibers;
 using ExitGames.Logging;
@@ -30,6 +31,7 @@ using log4net.Config;
 using Photon.SocketServer;
 using S2SProtocol.Common;
 using LogManager = ExitGames.Logging.LogManager;
+// ReSharper disable UnusedVariable
 
 namespace DatabaseServer
 {
@@ -81,7 +83,7 @@ namespace DatabaseServer
         {
             CreateLogs();
             Initialize();
-            Log.Debug($"[{DateTime.Now}]{Info.ServerType} 正在运行 [Server Name]{Info.ServerName}");
+            Log.Debug($"[{ServerTime.Instance.Time}]{Info.ServerType} 正在运行 [Server Name]{Info.ServerName}");
             Fiber.Schedule(PeerToMaster.ConnectToMaster, 0);
         }
 
@@ -95,7 +97,7 @@ namespace DatabaseServer
         protected override void TearDown()
         {
             Release();
-            Log.Debug($"[{DateTime.Now}]{Info.ServerType} 正在停止 [Server Name]{Info.ServerName}");
+            Log.Debug($"[{ServerTime.Instance.Time}]{Info.ServerType} 正在停止 [Server Name]{Info.ServerName}");
         }
 
         #endregion
@@ -131,6 +133,12 @@ namespace DatabaseServer
         /// </summary>
         private void Initialize()
         {
+            var time = ServerTime.Instance.Time;
+            Fiber = new ExtendedPoolFiber();
+            Fiber.Start();
+            UpdateDatabase.Migration();
+            Fiber.Enqueue(DataBuffer.Instance.Initial);
+            Thread.Sleep(1000);
             PeerToMaster = new PeerToMasterServer(this);
             Info = new ServerInfo
             {
@@ -139,9 +147,6 @@ namespace DatabaseServer
             };
             IsConnecting = false;
             Load = new ServerLoad();
-            Fiber = new ExtendedPoolFiber();
-            Fiber.Start();
-            UpdateDatabase.Migration();
         }
 
         /// <summary>

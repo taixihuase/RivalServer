@@ -152,6 +152,7 @@
     <Compile Include="Entity\Maps\CombatAttributeMap.cs" />
     <Compile Include="Entity\Maps\CardMap.cs" />
     <Compile Include="Entity\Maps\LevelMap.cs" />
+    <Compile Include="Entity\Maps\PlayerCardPackMap.cs" />
     <Compile Include="Entity\Maps\TitleMap.cs" />
     <Compile Include="Entity\Maps\AvatarMap.cs" />
     <Compile Include="Entity\Context\IUnitOfWork.cs" />
@@ -170,33 +171,14 @@
     <Compile Include="Entity\Models\LordCard.cs" />
     <Compile Include="Entity\Models\MonsterCard.cs" />
     <Compile Include="Entity\Models\Player.cs" />
+    <Compile Include="Entity\Models\PlayerCardPack.cs" />
     <Compile Include="Entity\Models\SummonCard.cs" />
     <Compile Include="Entity\Models\SpellCard.cs" />
     <Compile Include="Entity\Models\Title.cs" />
     <Compile Include="Entity\Models\User.cs" />
-    <Compile Include="Migrations\201604101430358_2230.cs" />
-    <Compile Include="Migrations\201604101430358_2230.Designer.cs">
-      <DependentUpon>201604101430358_2230.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604111501180_2300.cs" />
-    <Compile Include="Migrations\201604111501180_2300.Designer.cs">
-      <DependentUpon>201604111501180_2300.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604111526041_2325.cs" />
-    <Compile Include="Migrations\201604111526041_2325.Designer.cs">
-      <DependentUpon>201604111526041_2325.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604111539146_2339.cs" />
-    <Compile Include="Migrations\201604111539146_2339.Designer.cs">
-      <DependentUpon>201604111539146_2339.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604111545161_2345.cs" />
-    <Compile Include="Migrations\201604111545161_2345.Designer.cs">
-      <DependentUpon>201604111545161_2345.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604131527278_2327.cs" />
-    <Compile Include="Migrations\201604131527278_2327.Designer.cs">
-      <DependentUpon>201604131527278_2327.cs</DependentUpon>
+    <Compile Include="Migrations\201604141626428_0025.cs" />
+    <Compile Include="Migrations\201604141626428_0025.Designer.cs">
+      <DependentUpon>201604141626428_0025.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PeerToMasterServer.cs" />
@@ -229,23 +211,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604101430358_2230.resx">
-      <DependentUpon>201604101430358_2230.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604111501180_2300.resx">
-      <DependentUpon>201604111501180_2300.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604111526041_2325.resx">
-      <DependentUpon>201604111526041_2325.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604111539146_2339.resx">
-      <DependentUpon>201604111539146_2339.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604111545161_2345.resx">
-      <DependentUpon>201604111545161_2345.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604131527278_2327.resx">
-      <DependentUpon>201604131527278_2327.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604141626428_0025.resx">
+      <DependentUpon>201604141626428_0025.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

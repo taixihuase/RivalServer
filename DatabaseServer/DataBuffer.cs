@@ -20,7 +20,10 @@
 //-----------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Data.Entity;
 using C2SProtocol.Data;
+using DatabaseServer.Entity.Context;
+using DatabaseServer.Entity.Models;
 
 namespace DatabaseServer
 {
@@ -53,12 +56,62 @@ namespace DatabaseServer
         /// 类型：方法
         /// 名称：DataBuffer
         /// 作者：taixihuase
-        /// 作用：静态构造数据缓存池
+        /// 作用：构造数据缓存池
         /// 编写日期：2016/4/12
         /// </summary>
-        static DataBuffer()
+        private DataBuffer()
         {
-            
+
+        }
+
+        /// <summary>
+        /// 类型：方法
+        /// 名称：Initial
+        /// 作者：taixihuase
+        /// 作用：从数据库读取数据以初始化缓存池
+        /// 编写日期：2016/4/14
+        /// </summary>
+        public void Initial()
+        {
+            using (RivalContext db = new RivalContext())
+            {
+                db.Find<User>().Load();
+                db.Find<Player>().Load();
+                db.Find<Avatar>().Load();
+                db.Find<Title>().Load();
+                db.Find<Card>().Load();
+                db.Find<CardEffect>().Load();
+                db.Find<CardPack>().Load();
+                
+                foreach (var user in db.Users.Local)
+                {                    
+                    User.Add(user.Id, user.ToUserInfo());
+                }
+                foreach (var player in db.Players.Local)
+                {
+                    Player.Add(player.Id, player.ToPlayerInfo());
+                }
+                foreach (var avatar in db.Avatars.Local)
+                {
+                    Avatar.Add(avatar.Id, avatar.ToAvatarInfo());
+                }
+                foreach (var title in db.Titles.Local)
+                {
+                    Title.Add(title.Id, title.ToTitleInfo());
+                }
+                foreach (var card in db.Cards.Local)
+                {
+                    Card.Add(card.Id, card.ToCardInfo());
+                }
+                foreach (var effect in db.CardEffects.Local)
+                {
+                    CardEffect.Add(effect.Id, effect.ToCardEffectInfo());
+                }
+                foreach (var pack in db.CardPacks.Local)
+                {
+                    CardPack.Add(pack.Id, pack.ToCardPackInfo());
+                }
+            }
         }
     }
 }

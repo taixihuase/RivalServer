@@ -19,7 +19,7 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
-using System.ComponentModel;
+using C2SProtocol.Data;
 
 namespace DatabaseServer.Entity.Models
 {
@@ -34,50 +34,32 @@ namespace DatabaseServer.Entity.Models
     {
         public int Id { get; set; }
 
-        public OwnerType Owner { get; set; }
+        public CardEffectInfo.OwnerType Owner { get; set; }
 
-        /// <summary>
-        /// 类型：枚举
-        /// 名称：OwnerType
-        /// 作者：taixihuase
-        /// 作用：效果所有者类型枚举
-        /// 编写日期：2016/4/5
-        /// </summary>
-        public enum OwnerType : byte
-        {
-            [Description("All")]
-            All,
-            [Description("OnlyLord")]
-            OnlyLord,
-            [Description("OnlyMonster")]
-            OnlyMonster,
-            [Description("OnlySpell")]
-            OnlySpell,
-            [Description("LordAndMonster")]
-            LordAndMonster,
-            [Description("LordAndSpell")]
-            LordAndSpell,
-            [Description("MonsterAndSpell")]
-            MonsterAndSpell
-        }
-
-        public ConditionType Condition { get; set; }
-
-        /// <summary>
-        /// 类型：枚举
-        /// 名称：ConditionType
-        /// 作者：taixihuase
-        /// 作用：触发条件类型枚举
-        /// 编写日期：2016/4/5
-        /// </summary>
-        public enum ConditionType : byte
-        {
-            [Description("All")]
-            All,
-        }
+        public CardEffectInfo.ConditionType Condition { get; set; }
 
         public string Description { get; set; }
 
         public int? Value { get; set; }
+
+        /// <summary>
+        /// 类型：方法
+        /// 名称：ToCardEffectInfo
+        /// 作者：taixihuase
+        /// 作用：转换为 CardEffectInfo 对象
+        /// 编写日期：2016/4/14
+        /// </summary>
+        /// <returns></returns>
+        public CardEffectInfo ToCardEffectInfo()
+        {
+            return new CardEffectInfo
+            {
+                CardEffectId = Id,
+                Owner = Owner,
+                Condition = Condition,
+                Description = Description,
+                Value = Value
+            };
+        }
     }
 }

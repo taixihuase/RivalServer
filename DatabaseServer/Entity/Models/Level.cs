@@ -19,8 +19,6 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace DatabaseServer.Entity.Models
 {
     /// <summary>
@@ -35,5 +33,9 @@ namespace DatabaseServer.Entity.Models
         public int Id { get; set; }
 
         public int UpgradeExp { get; set; }
+
+        public int WinExp { get; set; }
+
+        public int LoseExp { get; set; }
     }
 }

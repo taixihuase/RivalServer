@@ -19,6 +19,8 @@
 //
 //----------------------------------------------------------------------------------------------------------
 
+using C2SProtocol.Data;
+
 namespace DatabaseServer.Entity.Models
 {
     /// <summary>
@@ -30,6 +32,6 @@ namespace DatabaseServer.Entity.Models
     /// </summary>
     public class SummonCard : Card
     {
-        public MagnitudeType Magnitude { get; set; }
+        public CardInfo.MagnitudeType Magnitude { get; set; }
     }
 }
